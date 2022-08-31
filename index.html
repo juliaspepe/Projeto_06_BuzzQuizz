@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-Br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuzzQuizz</title>
+    <link rel="stylesheet" href="data/css/reset.css">
     <link rel="stylesheet" href="data/css/style.css">
 </head>
-<body>
-    <div class="tela1">
-        <div class="baseCriarQuizz">
-            <div class="baseVaziaCriarQuizz">
-                <p>Você não criou nenhum quizz ainda :(</p>
-                <button onclick="iniciarCriarQuizz()">Criar Quizz</button>
-            </div>
-            <ul class="listaDeQuizz">
-            </ul>
-        </div>
 
-        <div class="baseListaQuizz">
+<body>
+    <header>
+        <p>BuzzQuizz</p>
+    </header>
+    <div class="container">
+        <div class="tela1">
+            <div class="baseCriarQuizz">
+                <div class="baseVaziaCriarQuizz">
+                    <p>Você não criou nenhum quizz ainda :(</p>
+                    <button onclick="iniciarCriarQuizz()">Criar Quizz</button>
+                </div>
+                <ul class="listaDeQuizz">
+                </ul>
+            </div>
+            <div class="baseListaQuizz">
+            </div>
         </div>
+    </div>
+    <div class="passoUmCriacaoQuizz">
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="data/scripts/main.js"></script>
+
 </html>
