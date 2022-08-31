@@ -186,7 +186,6 @@ h1 {
     border-radius: 15px;
     text-align: center;
     color: #FFF5F4;
-<<<<<<< HEAD
     margin-top: 85px;
 }
 
@@ -247,7 +246,7 @@ h1 {
     color: white;
     font-family: Roboto;
     font-size: 21px;
-=======
+
 }
 
 .sucessoDoQuizz {
@@ -290,5 +289,4 @@ h1 {
     position: absolute;
     bottom: 115px;
     left: 115px;
->>>>>>> 03a474b3b3fda87e7138fe623faa344deb180ad0
 }
