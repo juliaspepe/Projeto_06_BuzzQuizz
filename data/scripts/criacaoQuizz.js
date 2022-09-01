@@ -20,7 +20,7 @@ function verificarTitulo() {
     if (textoTitulo.length > 20 && textoTitulo.length < 65){
         tituloVerificado = true;
     } else {
-        alert ('Título no tamanho incorreto. Favor inserir um título que tenha no mínimo 20 caracteres e no máximo 65.');
+        deuErro();
     }
 }
 
@@ -29,7 +29,7 @@ function verificarURL(){
     if (new URL(textoURL)){ 
         urlVerificado = true;
     } else {
-        alert ('Imagem no formato incorreto');
+        deuErro();
     }
 }
 
@@ -38,7 +38,7 @@ function verificarQdPerguntas(){
     if (textoQdPerguntas >= 3){
         qdPerguntasVerificado = true;
     } else {
-        alert ('Número mínimo de perguntas: 3. Favor colocar um novo número');
+        deuErro();
     }
 }
 
@@ -47,8 +47,12 @@ function verificarNiveis(){
     if (textoNiveis >= 2){
         niveisVerificado = true;
     } else {
-        alert ('Número mínimo de níveis: 2. Favor colocar um novo número');
+        deuErro();
     }
+}
+
+function deuErro(){
+    alert('Favor preencher os dados corretamente');
 }
 
 function criarPerguntas(){
