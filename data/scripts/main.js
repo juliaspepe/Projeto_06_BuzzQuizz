@@ -49,6 +49,15 @@ function verificarTitulo() {
         alert ('Título no tamanho incorreto. Favor inserir um título que tenha no mínimo 20 caracteres e no máximo 65.');
     }
 }
+// Alternativa para tratamento de erro da URl
+// function verificarURl(){
+//     textoURL = document.querySelector('.URL').value;
+//     if(new URL(textoURL)){
+//         urlVerificado = true;
+//     }else{
+//         alert('Imagem no formato incorreto')
+//     }
+// }
 
 function verificarURL(){
     textoURL = document.querySelector('.URL').value;
@@ -202,4 +211,3 @@ function verificaPorcentagemMinima(objeto){
 const buttonFinalizarQuizz = document.querySelector('.button-finalizar-quizz')
 buttonFinalizarQuizz.addEventListener('click', guardarNiveis)
 
-criarNiveis(2)
