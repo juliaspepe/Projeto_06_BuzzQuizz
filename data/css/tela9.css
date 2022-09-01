@@ -1,0 +1,26 @@
+.tela9 input {
+    border: 1px solid #D1D1D1; border-radius: .5rem;
+    width: 100%; height: 3rem;
+}
+.tela9 input::placeholder{ color:#D1D1D1}
+.tela9 ul{
+    width: 50%;
+    list-style: none;
+}
+.tela9 ul li {
+    margin-top: 2rem;
+    padding: 2rem;
+    border-radius: .5rem;
+    background-color: #FFFFFF;
+}
+.tela9 ul li div { display: flex; justify-content: space-between;}
+.tela9 ul li input,
+.tela9 ul li p,
+.tela9 ul li.expanded ion-icon  {display: none}
+
+.tela9 ul li.expanded input,
+.tela9 ul li.expanded p,
+.tela9 ul li.expanded div,
+.tela9 ul li.expanded div ion-icon{
+    display: initial;
+}
