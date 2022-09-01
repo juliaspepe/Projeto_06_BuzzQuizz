@@ -23,6 +23,7 @@ let urlVerificado = false;
 let qdPerguntasVerificado = false;
 let niveisVerificado = false;
 
+
 const perguntas = []; 
 const niveis = [];
 

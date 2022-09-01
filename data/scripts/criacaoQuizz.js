@@ -1,6 +1,4 @@
-
-
-
+let objetoRespostas = {};
 // Tela 8
 function primeiraParteCriacaoQuizz() {
     document.querySelector(".tela8").innerHTML = 
