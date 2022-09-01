@@ -1,0 +1,72 @@
+.tela10 ul{
+    margin-bottom: 75px;
+    width: 100%;
+}
+
+.tela10 button{
+    width: 325px;
+    height: 54px;
+    border-radius: 15px;
+    background-color: #EC362D;
+    color: white;
+    font-family: Roboto;
+    font-size: 21px;
+    border: none;
+}
+
+.tela10 button:hover{
+    background-color: #da231a;
+    transition: 0.5s;
+}
+.tela10{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tela10 h1{
+    margin-bottom: 50px;
+}
+
+.li-nivel{
+    background-color: rgb(253, 253, 253);
+    height: 74px;
+    margin-bottom: 20px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+
+.li-nivel-input{
+    margin-top: 20px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.input-nivel{
+    height: 46px;
+    font-family: Roboto;
+    font-size: 19px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
+}
+
+.li-nivel-label{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.li-nivel:not(#selecionada) .li-nivel-input{
+    display: none;
+}
+
+#selecionada{
+    height: 300px;
+}

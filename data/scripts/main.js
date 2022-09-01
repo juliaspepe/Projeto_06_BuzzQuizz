@@ -11,10 +11,6 @@ promise.then(
     }
 )
 
-function iniciarCriarQuizz(){
-    document.querySelector(".tela1").classList.add("disable");
-    primeiraParteCriacaoQuizz();
-}
 
 // informações básicas do quizz (julia) 
 
@@ -27,84 +23,19 @@ let urlVerificado = false;
 let qdPerguntasVerificado = false;
 let niveisVerificado = false;
 
+const perguntas = []; 
+const niveis = [];
 
-function primeiraParteCriacaoQuizz() {
-    document.querySelector(".passoUmCriacaoQuizz").innerHTML = 
 
-    `<h1>Comece pelo começo</h1>
-    <div class="inputsPassoUm">
-    <input type="text" placeholder="Título do seu quizz" class="titulo" />
-    <input type="url" placeholder="URL da imagem do seu quizz" class="URL" />
-    <input type="text" placeholder="Quantidade de perguntas do quizz" class="qdPerguntas" />
-    <input type="text" placeholder="Quantidade de níveis do quizz" class="niveis" />
-    </div>
-    <button onclick="criarPerguntas()">Prosseguir pra criar perguntas</button>`
+function iniciarCriarQuizz(){
+    alternarTelas(8)
+    primeiraParteCriacaoQuizz();
 }
 
-function verificarTitulo() {
-    textoTitulo = document.querySelector('.titulo').value;
-    if (textoTitulo.length > 20 && textoTitulo.length < 65){
-        tituloVerificado = true;
-    } else {
-        alert ('Título no tamanho incorreto. Favor inserir um título que tenha no mínimo 20 caracteres e no máximo 65.');
-    }
+function alternarTelas(tela){
+    document.querySelectorAll(".container > div").forEach( tela =>{
+        tela.classList.add("hidden");
+    } )
+
+    document.querySelector(`.container > .tela${tela}`).classList.remove("hidden");
 }
-
-function verificarURL(){
-    textoURL = document.querySelector('.URL').value;
-    if (textoURL !== ''){ // comparação faltando
-        urlVerificado = true;
-    } else {
-        alert ('Imagem no formato incorreto');
-    }
-}
-
-function verificarQdPerguntas(){
-    textoQdPerguntas = document.querySelector('.qdPerguntas').value;
-    if (textoQdPerguntas >= 3){
-        qdPerguntasVerificado = true;
-    } else {
-        alert ('Número mínimo de perguntas: 3. Favor colocar um novo número');
-    }
-}
-
-function verificarNiveis(){
-    textoNiveis = document.querySelector('.niveis').value;
-    if (textoNiveis >= 2){
-        niveisVerificado = true;
-    } else {
-        alert ('Número mínimo de níveis: 2. Favor colocar um novo número');
-    }
-}
-
-function criarPerguntas(){
-    verificarTitulo();
-    verificarURL();
-    verificarQdPerguntas();
-    verificarNiveis();
-
-    if (tituloVerificado === true && urlVerificado === true && qdPerguntasVerificado === true &&  niveisVerificado === true){
-     alert('deu certo'); // chamar a função do desktop 9
-    }
-}
-
-// sucesso do quizz (julia)
-
-function sucessoQuizz(){
-    document.querySelector(".sucessoDoQuizz").innerHTML = 
-
-    `<h1>Seu quizz está pronto!</h1>
-    <img class="imgQuizz" src="${textoURL}"/>
-    <p class="tituloDoQuizz">${textoTitulo}</p>
-    <button class="botaoAcessar" onclick="acessarQuizz()">Acessar Quizz</button>
-    <button class="botaoHome" onclick="home()">Voltar para home</button>`
-}
-
-function acessarQuizz(){
-    alert ('acesso ao quizz ok');
-}
-
-function home(){
-    alert('acesso a home ok');
-}
-
