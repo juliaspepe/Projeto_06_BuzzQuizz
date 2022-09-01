@@ -1,0 +1,39 @@
+.tela11 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tela11 .botaoAcessar,
+.tela11 .botaoHome {
+    width: 200px;
+    height: 44px;
+}
+
+.tela11 .botaoHome {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 21px;
+    border-radius: 15px;
+    text-align: center;
+    color: #818181;
+}
+.tituloDoQuizz {
+    width: 309px;
+    height: 54px;
+    font-weight: 400;
+    font-size: 23px;
+    color: #FFFFFF;
+    position: absolute;
+    bottom: 115px;
+    left: 115px;
+}
+.imgQuizz {
+    width: 500px;
+    height: 266px;
+    border-radius: 5px; 
+    position: relative;
+    margin-bottom: 45px;
+    margin-top: 20px;
+}
