@@ -220,7 +220,13 @@ h1 {
 }
 
 .input-nivel{
-    
+    height: 46px;
+    font-family: Roboto;
+    font-size: 19px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
 }
 
 .li-nivel-label{
@@ -246,7 +252,12 @@ h1 {
     color: white;
     font-family: Roboto;
     font-size: 21px;
+    border: none;
+}
 
+.tela10 button:hover{
+    background-color: #da231a;
+    transition: 0.5s;
 }
 
 .sucessoDoQuizz {

@@ -115,5 +115,42 @@ function home(){
     alert('acesso a home ok');
 }
 
+// Tela 10
+
+const ulNiveis = document.querySelector('.ul-niveis');
 
 
+function criarNiveis(lvl){
+    for(let i = 2; i <= lvl; i++){
+    ulNiveis.innerHTML += `
+        <li class="li-nivel">
+            <div class="li-nivel-label"><span>Nível ${i}</span><img class="" src="Vector.png"  alt="" onclick="abreOpcaoNivel(this)" id="${i}">
+            </div>
+            <div class="li-nivel-input">
+                <input class="input-nivel disable" type="text" placeholder="Título do nível" name="titulo-nivel">
+                <input class="input-nivel disable" type="text" placeholder="% de acerto mínima" name="porcentagem-nivel">
+                <input class="input-nivel disable" type="text" placeholder="URL da imagem do nível" name="URL-imagem">
+                <input class="input-nivel disable" type="text" placeholder="Descrição do nível" name="descricao-nivel">
+            </div>
+        </li>
+    `
+}
+}
+
+function abreOpcaoNivel(itemClicado){
+    const liSelecionado = document.getElementById('selecionada');
+    if(liSelecionado){
+        liSelecionado.id = '';
+        Array.from(liSelecionado.children[1].children).forEach((input) => {
+        input.classList.add('disable')
+    })
+    }
+    itemClicado.parentNode.parentNode.id = 'selecionada';
+    const inputs = Array.from(itemClicado.parentNode.parentNode.children[1].children);
+    inputs.forEach((input) => {
+        input.classList.remove('disable')
+    })
+
+}
+
+criarNiveis(3)
