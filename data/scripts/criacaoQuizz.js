@@ -26,7 +26,7 @@ function verificarTitulo() {
 
 function verificarURL(){
     textoURL = document.querySelector('.URL').value;
-    if (textoURL !== ''){ // comparação faltando
+    if (new URL(textoURL)){ 
         urlVerificado = true;
     } else {
         alert ('Imagem no formato incorreto');
