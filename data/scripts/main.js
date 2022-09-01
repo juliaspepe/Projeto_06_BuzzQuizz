@@ -127,10 +127,10 @@ function criarNiveis(lvl){
             <div class="li-nivel-label"><span>Nível ${i}</span><img class="" src="Vector.png"  alt="" onclick="abreOpcaoNivel(this)" id="${i}">
             </div>
             <div class="li-nivel-input">
-                <input class="input-nivel disable" type="text" placeholder="Título do nível" name="titulo-nivel">
-                <input class="input-nivel disable" type="text" placeholder="% de acerto mínima" name="porcentagem-nivel">
-                <input class="input-nivel disable" type="text" placeholder="URL da imagem do nível" name="URL-imagem">
-                <input class="input-nivel disable" type="text" placeholder="Descrição do nível" name="descricao-nivel">
+                <input class="input-nivel titulo-nivel disable" type="text" placeholder="Título do nível" name="titulo-nivel" id="titulo-nivel">
+                <input class="input-nivel disable" type="text" placeholder="% de acerto mínima" name="porcentagem-nivel" id="porcentagem-nivel">
+                <input class="input-nivel disable" type="text" placeholder="URL da imagem do nível name"URL-imagem">
+                <input class="input-nivel disable" type="text" placeholder="Descrição do nível" name"descricao-nivel" id="descricao-nivel">
             </div>
         </li>
     `
@@ -150,7 +150,56 @@ function abreOpcaoNivel(itemClicado){
     inputs.forEach((input) => {
         input.classList.remove('disable')
     })
-
 }
 
-criarNiveis(3)
+const niveis = [];
+function guardarNiveis(){
+    const titulosNivel = document.querySelectorAll('.li-nivel-input')
+    let contador = 1;
+    Array.from(titulosNivel).forEach((item) => {
+        const objetoNivel = {
+            titulo: '',
+            porcentagem:'',
+            url:'',
+            descricao:''
+        };
+        if(item.children[0].value.length < 10){
+            alert(`Titulo ${contador} precisa ter mais de 10 caracteres`)
+        }
+        if(Number(item.children[1].value) < 0 || (item.children[1].value) > 100){
+            alert('Preencha porcentagem apenas com números entre 0 - 100 por favor!')
+        }
+
+        if(!new URL(item.children[2].value)){
+            alert('Digite uma URL válida por favor!')
+        }
+
+        if(item.children[3].value.length < 30){
+            alert('A descrição precisa ter no mínimo 30 caracteres')
+        }
+        objetoNivel.titulo = item.children[0].value
+        objetoNivel.porcentagem = item.children[1].value
+        objetoNivel.url = item.children[2].value
+        objetoNivel.descricao = item.children[3].value
+        niveis.push(objetoNivel)
+        contador++
+    })
+
+    const porcentagemOk = niveis.filter(verificaPorcentagemMinima)
+    if(porcentagemOk.length == 0){
+        alert('É necessário que algum nível tenha % de acerto mínima igual a 0, por favor, preencha corretamente!')
+    }
+}
+
+
+function verificaPorcentagemMinima(objeto){
+    if(objeto.porcentagem == 0){
+        return true;
+    }
+}
+
+
+const buttonFinalizarQuizz = document.querySelector('.button-finalizar-quizz')
+buttonFinalizarQuizz.addEventListener('click', guardarNiveis)
+
+criarNiveis(2)
