@@ -26,7 +26,7 @@ let tituloVerificado = false;
 let urlVerificado = false;
 let qdPerguntasVerificado = false;
 let niveisVerificado = false;
-
+let objetoRespostas = {};
 
 function primeiraParteCriacaoQuizz() {
     document.querySelector(".passoUmCriacaoQuizz").innerHTML = 
@@ -83,6 +83,13 @@ function criarPerguntas(){
     verificarQdPerguntas();
     verificarNiveis();
 
+    objetoRespostas = {
+        title: textoTitulo,
+        image: textoURL,
+        qtd: textoQdPerguntas,
+        level: textoNiveis
+    }
+
     if (tituloVerificado === true && urlVerificado === true && qdPerguntasVerificado === true &&  niveisVerificado === true){
      alert('deu certo'); // chamar a função do desktop 9
     }
@@ -107,4 +114,6 @@ function acessarQuizz(){
 function home(){
     alert('acesso a home ok');
 }
+
+
 
