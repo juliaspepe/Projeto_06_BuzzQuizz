@@ -143,7 +143,7 @@ function criarNiveis(lvl){
             </div>
         </li>
     `
-}
+    }
 }
 
 function abreOpcaoNivel(itemClicado){
