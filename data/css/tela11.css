@@ -16,18 +16,20 @@
     font-weight: 400;
     font-size: 21px;
     border-radius: 15px;
+    border: none;
     text-align: center;
     color: #818181;
+    margin-top: 9px;
 }
 .tituloDoQuizz {
-    width: 309px;
+    width: 320px;
     height: 54px;
     font-weight: 400;
     font-size: 23px;
     color: #FFFFFF;
     position: absolute;
-    bottom: 115px;
-    left: 115px;
+    bottom: 190px;
+    left: 450px;
 }
 .imgQuizz {
     width: 500px;

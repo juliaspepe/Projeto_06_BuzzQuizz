@@ -8,7 +8,8 @@
     <title>BuzzQuizz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="data/css/reset.css">
     <link rel="stylesheet" href="data/css/general.css">
@@ -39,16 +40,15 @@
                 </div>
                 <div class="baseUsuarioCriarQuizz">
                     <div>
-                        <span>Seus Quizzes</span>
                         <ion-icon name="add-circle" onclick="iniciarCriarQuizz()"></ion-icon>
                     </div>
                     <ul class="listaDeQuizz">
-                      
+
                     </ul>
                 </div>
             </div>
 
-            <span>Seus Quizzes</span>
+            <h2>Seus Quizzes</h2>
             <div class="baseListaQuizz">
 
             </div>
@@ -60,21 +60,25 @@
         <div class="tela8 hidden">
         </div>
         <div class="tela9 hidden">
-            <span>Crie suas perguntas</span>
+            <h1>Crie suas perguntas</h1>
             <ul class="perguntasManager">
-                
+
             </ul>
         </div>
         <div class="tela10 hidden">
             <h1>Agora, decida os níveis</h1>
             <ul class="ul-niveis">
                 <li class="li-nivel" id="selecionada">
-                    <div class="li-nivel-label"><span>Nível 1</span><img class="" src="Vector.png" alt="" onclick="abreOpcaoNivel(this)" id="1"></div>
+                    <div class="li-nivel-label"><span>Nível 1</span><img class="" src="Vector.png" alt=""
+                            onclick="abreOpcaoNivel(this)" id="1"></div>
                     <div class="li-nivel-input">
-                        <input class="input-nivel titulo-nivel" type="text" placeholder="Título do nível" name="titulo-nivel" id="titulo-nivel">
-                        <input class="input-nivel" type="text" placeholder="% de acerto mínima" name="porcentagem-nivel" id="porcentagem-nivel">
+                        <input class="input-nivel titulo-nivel" type="text" placeholder="Título do nível"
+                            name="titulo-nivel" id="titulo-nivel">
+                        <input class="input-nivel" type="text" placeholder="% de acerto mínima" name="porcentagem-nivel"
+                            id="porcentagem-nivel">
                         <input class="input-nivel" type="text" placeholder="URL da imagem do nível name">
-                        <input class="input-nivel" type="text" placeholder="Descrição do nível" name="descricao-nivel" id="descricao-nivel">
+                        <input class="input-nivel" type="text" placeholder="Descrição do nível" name="descricao-nivel"
+                            id="descricao-nivel">
                     </div>
                 </li>
             </ul>
