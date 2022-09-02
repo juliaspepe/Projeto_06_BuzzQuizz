@@ -1,12 +1,14 @@
+let quizzes;
 let promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
 promise.then(
     function(res){
+        quizzes = res;
         res.data.forEach( (quizz) =>{
             document.querySelector(".baseListaQuizz").innerHTML += `
-        <div class="quizzThumbnail" data-id="${quizz.id}">
-            <p class="quizzTitulo">${quizz.title}</p>
-            <img src="${quizz.image}" alt="quizz">
-        </div>`
+                <div class="quizzThumbnail" data-id="${quizz.id}" onclick="openQuizz(this)">
+                    <p class="quizzTitulo">${quizz.title}</p>
+                    <img src="${quizz.image}" alt="quizz">
+                </div>`
         })
     }
 )

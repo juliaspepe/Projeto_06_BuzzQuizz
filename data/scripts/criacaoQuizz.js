@@ -88,6 +88,55 @@ function expandirEscolha(e){
     })
     e.parentNode.parentNode.classList.add("expanded");
 };
+function recolherDadosPerguntas(){
+    let canNextPage = true;
+    document.querySelectorAll(".perguntasManager li").forEach( every =>{
+        let infos = {
+            title: "", color: "", answer: [
+
+            ]
+        }
+        let insertInfo = function(index, input, isCorrect){
+            infos.answer[index] = {}
+            infos.answer[index].text = input.value;
+            infos.answer[index].isCorrectAnswer = isCorrect;
+        }
+        every.querySelectorAll("input").forEach( inputs =>{
+            if(inputs.value === "" && canNextPage){ 
+                alert("Os campos devem estar todos preenchidos.");
+                canNextPage = false;
+            }
+            if(inputs.placeholder == "Texto da pergunta"){
+                if(inputs.value.length >= 20){
+                    infos.title = inputs.value;
+                }else if (canNextPage){
+                    alert("Texto da pergunta deve possuir no mínimo 20 caracteres.");
+                    canNextPage = false;
+                }
+            } else if (inputs.placeholder == "Cor de fundo da pergunta"){
+                infos.color = inputs.value;
+            } else if (inputs.placeholder == "Resposta Correta"){
+                insertInfo(0, inputs, true);
+            } else if (inputs.placeholder == "URL da imagem 1"){
+                infos.answer[0].image = inputs.value;
+            } else if (inputs.placeholder == "Resposta incorreta 1"){
+                insertInfo(1, inputs, false);
+            } else if (inputs.placeholder == "URL da imagem 2"){
+                infos.answer[1].image = inputs.value;
+            } else if (inputs.placeholder == "Resposta incorreta 2"){
+                insertInfo(2, inputs, false);
+            } else if (inputs.placeholder == "URL da imagem 3"){
+                infos.answer[2].image = inputs.value;
+            } else if (inputs.placeholder == "Resposta incorreta 3"){
+                insertInfo(3, inputs, false);
+            } else if (inputs.placeholder == "URL da imagem 4"){
+                infos.answer[3].image = inputs.value;
+            }
+        } )
+        perguntas.push(infos);
+    })
+    if(canNextPage){ criarEscolhas() }
+}
 function criacaoPerguntasDoQuizz(qtdePerguntas){
     let perguntasManager = document.querySelector(".perguntasManager");
     perguntasManager.innerHTML = "";
@@ -100,20 +149,20 @@ function criacaoPerguntasDoQuizz(qtdePerguntas){
             <input type="color" placeholder="Cor de fundo da pergunta" />
             <p>Resposta Correta</p>
             <input type="text" placeholder="Resposta Correta">
-            <input type=""url placeholder="URL da imagem"/>
+            <input type=""url placeholder="URL da imagem 1"/>
 
             <p>Resposta Incorreta</p>
             <input type="text" placeholder="Resposta incorreta 1">
-            <input type=""url placeholder="URL da imagem"/>
+            <input type=""url placeholder="URL da imagem 2"/>
             <input type="text" placeholder="Resposta incorreta 2">
-            <input type=""url placeholder="URL da imagem"/>
+            <input type=""url placeholder="URL da imagem 3"/>
             <input type="text" placeholder="Resposta incorreta 3">
-            <input type=""url placeholder="URL da imagem"/>
+            <input type=""url placeholder="URL da imagem 4"/>
         </li>`;
         perguntasManager.innerHTML += atalhoLi;
     }
 
-    perguntasManager.innerHTML += `<button onclick="criarEscolhas()">Prosseguir pra níveis</button>`;
+    perguntasManager.innerHTML += `<button onclick="recolherDadosPerguntas()">Prosseguir pra níveis</button>`;
 }   
 function criarEscolhas(){
     // verificar se todos os campos ja estão clicados
