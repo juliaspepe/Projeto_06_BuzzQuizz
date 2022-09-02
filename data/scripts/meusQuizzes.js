@@ -1,9 +1,9 @@
-localStorage.setItem('quizz', JSON.stringify({
-  quizz1:11159,
-  quizz2:11158,
-  quizz3:11157,
-  quizz4:11156
-}))
+// localStorage.setItem('quizz', JSON.stringify({
+//   quizz1:11159,
+//   quizz2:11158,
+//   quizz3:11157,
+//   quizz4:11156
+// }))
 let ulListaQuizzes = document.querySelector('.listaDeQuizz');
 
 const requisicao = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
@@ -33,9 +33,4 @@ requisicao.then((quizzes) => {
         </li>
   `
   })
-
-  
-
-
-  console.log(myQuizzes)
 })
