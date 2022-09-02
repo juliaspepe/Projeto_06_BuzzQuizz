@@ -18,16 +18,16 @@ function verificarTitulo() {
     if (textoTitulo.length > 20 && textoTitulo.length < 65){
         tituloVerificado = true;
     } else {
-        alert ('Título no tamanho incorreto. Favor inserir um título que tenha no mínimo 20 caracteres e no máximo 65.');
+        deuErro();
     }
 }
 
 function verificarURL(){
     textoURL = document.querySelector('.URL').value;
-    if (textoURL !== ''){ // comparação faltando
+    if (new URL(textoURL)){ 
         urlVerificado = true;
     } else {
-        alert ('Imagem no formato incorreto');
+        deuErro();
     }
 }
 
@@ -36,7 +36,7 @@ function verificarQdPerguntas(){
     if (textoQdPerguntas >= 3){
         qdPerguntasVerificado = true;
     } else {
-        alert ('Número mínimo de perguntas: 3. Favor colocar um novo número');
+        deuErro();
     }
 }
 
@@ -45,8 +45,12 @@ function verificarNiveis(){
     if (textoNiveis >= 2){
         niveisVerificado = true;
     } else {
-        alert ('Número mínimo de níveis: 2. Favor colocar um novo número');
+        deuErro();
     }
+}
+
+function deuErro(){
+    alert('Favor preencher os dados corretamente');
 }
 
 function criarPerguntas(){
@@ -55,28 +59,18 @@ function criarPerguntas(){
     verificarQdPerguntas();
     verificarNiveis();
 
+    objetoRespostas = {
+        title: textoTitulo,
+        image: textoURL,
+        qtd: textoQdPerguntas,
+        level: textoNiveis
+    }
+    console.log(objetoRespostas);
+
     if (tituloVerificado === true && urlVerificado === true && qdPerguntasVerificado === true &&  niveisVerificado === true){
         alternarTelas(9);
         criacaoPerguntasDoQuizz(textoQdPerguntas);
     }
-}
-
-function sucessoQuizz(){
-    document.querySelector(".tela11").innerHTML = 
-
-    `<h1>Seu quizz está pronto!</h1>
-    <img class="imgQuizz" src="${textoURL}"/>
-    <p class="tituloDoQuizz">${textoTitulo}</p>
-    <button class="botaoAcessar" onclick="acessarQuizz()">Acessar Quizz</button>
-    <button class="botaoHome" onclick="home()">Voltar para home</button>`
-}
-
-function acessarQuizz(){
-    alert ('acesso ao quizz ok');   
-}
-
-function home(){
-    alert('acesso a home ok');
 }
 
 // Tela 9
@@ -186,6 +180,9 @@ function guardarNiveis(){
         objetoNivel.descricao = item.children[3].value
         niveis.push(objetoNivel)
         contador++
+
+        console.log(objetoNivel);
+        console.log(niveis);
     })
 
     const porcentagemOk = niveis.filter(verificaPorcentagemMinima)
@@ -200,6 +197,99 @@ function verificaPorcentagemMinima(objeto){
     }
 }
 
-
 const buttonFinalizarQuizz = document.querySelector('.button-finalizar-quizz')
 buttonFinalizarQuizz.addEventListener('click', guardarNiveis)
+
+// tela 11
+function sucessoQuizz(){
+    document.querySelector(".tela11").innerHTML = 
+
+    `<h1>Seu quizz está pronto!</h1>
+    <img class="imgQuizz" src="${textoURL}"/>
+    <p class="tituloDoQuizz">${textoTitulo}</p>
+    <button class="botaoAcessar" onclick="acessarQuizz()">Acessar Quizz</button>
+    <button class="botaoHome" onclick="home()">Voltar para home</button>`
+}
+
+function acessarQuizz(){
+    alert ('acesso ao quizz ok');   
+}
+
+function home(){
+    alert('acesso a home ok');
+}
+
+function salvarQuizz(){
+    let quizzPronto = {
+	
+    title: objetoRespostas.title,
+	image: objetoRespostas.image,
+	questions: [
+		{
+			title: "Título da pergunta 1",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: "Título da pergunta 2",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: "Título da pergunta 3",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		}
+	],
+	levels: [
+		{
+			title: objetoNivel.titulo,
+			image: objetoNivel.url,
+			text: objetoNivel.descricao,
+			minValue: objetoNivel.porcentagem
+		},
+		{
+			title: "Título do nível 2",
+			image: "https://http.cat/412.jpg",
+			text: "Descrição do nível 2",
+			minValue: 50
+		}
+	]
+}
+    let enviarQuizz = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", quizzPronto);
+    enviarQuizz.then();
+    enviarQuizz.catch();
+}
