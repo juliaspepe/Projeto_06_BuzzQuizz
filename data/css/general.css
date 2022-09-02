@@ -39,7 +39,6 @@ header p {
 .tela1, 
 .tela9 {
     display: flex; flex-direction: column; align-items: center;
-    margin-top: 4rem;
     width: 80%;
 }
 
@@ -49,23 +48,32 @@ header p {
 
 h1 {
     font-weight: 700;
+    font-size: 20px;
+    line-height: 27px;
+    color: #000000;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-weight: 700;
     font-size: 23px;
     line-height: 27px;
     color: #000000;
-    margin-top: 120px;
-    margin-bottom: 27px;
+    margin-top: 140px;
 }
 
 
 .tela8 button,
 .tela9 button,
 .tela11 .botaoAcessar {
-    background-color: #EC362D;
-    font-family: 'Roboto';
-    font-weight: 400;
-    font-size: 21px;
-    border-radius: 15px;
-    text-align: center;
-    color: #FFF5F4;
-}
+        width: 325px;
+        height: 54px;
+        border-radius: 15px;
+        background-color: #EC362D;
+        color: white;
+        font-family: Roboto;
+        font-size: 21px;
+        border: none;
+    }
 

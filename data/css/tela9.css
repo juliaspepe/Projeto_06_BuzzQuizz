@@ -1,3 +1,7 @@
+.tela9 button {
+    margin-top: 80px;
+}
+
 .tela9 input {
     border: 1px solid #D1D1D1; border-radius: .5rem;
     width: 100%; height: 3rem;
@@ -6,8 +10,12 @@
 .tela9 ul{
     width: 50%;
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .tela9 ul li {
+    width: 600px;
     margin-top: 2rem;
     padding: 2rem;
     border-radius: .5rem;
