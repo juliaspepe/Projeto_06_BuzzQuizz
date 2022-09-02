@@ -6,7 +6,7 @@ function primeiraParteCriacaoQuizz() {
     `<h1>Comece pelo começo</h1>
     <div class="inputsPassoUm">
     <input type="text" placeholder="Título do seu quizz" class="titulo" />
-    <input type="url" placeholder="URL da imagem do seu quizz" class="URL" />
+    <input type="url"  placeholder="URL da imagem do seu quizz" class="URL" />
     <input type="text" placeholder="Quantidade de perguntas do quizz" class="qdPerguntas" />
     <input type="text" placeholder="Quantidade de níveis do quizz" class="niveis" />
     </div>
