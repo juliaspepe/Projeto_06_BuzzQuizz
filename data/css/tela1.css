@@ -1,79 +1,119 @@
-.tela1 .baseCriarQuizz{
-    margin: 0; padding: 0;
+.tela1 .baseCriarQuizz {
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 181px;
 }
-.tela1 .baseCriarQuizz.have{
-    margin: 0; padding: 0;
+
+.tela1 .baseCriarQuizz.have {
+    margin: 0;
+    padding: 0;
     width: 100%;
     min-height: calc(181px + 4rem);
 }
-.tela1 .baseCriarQuizz .baseUsuarioCriarQuizz{ display: none; }
-.tela1 .baseCriarQuizz.have .baseVaziaCriarQuizz { display: none;}
+
+.tela1 .baseCriarQuizz .baseUsuarioCriarQuizz {
+    display: none;
+}
+
+.tela1 .baseCriarQuizz.have .baseVaziaCriarQuizz {
+    display: none;
+}
+
 .tela1 .baseCriarQuizz.have .baseUsuarioCriarQuizz {
     display: initial;
 }
-.tela1 .baseCriarQuizz.have .baseUsuarioCriarQuizz .listaDeQuizz{
-    display: flex; padding: 0; margin: 0;
+
+.tela1 .baseCriarQuizz.have .baseUsuarioCriarQuizz .listaDeQuizz {
+    display: flex;
+    padding: 0;
+    margin: 0;
     list-style: none;
     overflow-y: hidden;
     overflow-x: auto;
 }
+
 .tela1 .baseCriarQuizz.have .baseUsuarioCriarQuizz div {
-    display: flex; align-items: center;
+    display: flex;
+    align-items: center;
     font-size: 1.5rem;
     font-weight: 700;
 }
-.tela1 .baseCriarQuizz.have .baseUsuarioCriarQuizz div ion-icon{
+
+.tela1 .baseCriarQuizz.have .baseUsuarioCriarQuizz div ion-icon {
     color: #EC362D;
 }
-.tela1 .baseVaziaCriarQuizz{
-    margin: 0; padding: 0;
+
+.tela1 .baseVaziaCriarQuizz {
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
     margin-top: 77px;
 }
+
 .tela1 .baseVaziaCriarQuizz button {
-    border: 2px dashed #EC362D; border-radius: 1rem;
-    color: #EC362D; background-color: transparent;
+    border: 2px dashed #EC362D;
+    border-radius: 1rem;
+    color: #EC362D;
+    background-color: transparent;
     padding: .5rem 1.5rem;
     transition: all .5s;
     margin-top: 25px;
     font-size: 21px;
     font-family: 'Roboto';
 }
+
 .tela1 .baseVaziaCriarQuizz button:hover {
-    color: aliceblue; background-color: #EC362D;
+    color: aliceblue;
+    background-color: #EC362D;
 }
+
 .tela1 .baseVaziaCriarQuizz p {
-    color:#B9B9B9;
+    color: #B9B9B9;
     text-align: center;
     width: 200px;
     font-size: 20px;
     font-family: 'Roboto';
 }
+
 .tela1 .baseVaziaCriarQuizz {
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    border: 1px dashed #D4D4D4; border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed #D4D4D4;
+    border-radius: .5rem;
 }
-.tela1 .baseCriarQuizz{
-}
-.tela1 .baseListaQuizz{
-    display: flex; justify-content: space-evenly; flex-wrap: wrap;
+
+.tela1 .baseCriarQuizz {}
+
+.tela1 .baseListaQuizz {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     width: 100%;
+    margin-top: 10px;
 }
-.tela1 .quizzThumbnail{
+
+.tela1 .quizzThumbnail {
     margin-top: 1rem;
     position: relative;
     box-sizing: border-box;
 }
+
 .tela1 .quizzThumbnail,
-.tela1 .quizzThumbnail img{
-    width: 340px; height: 181px;
+.tela1 .quizzThumbnail img {
+    width: 340px;
+    height: 181px;
     border-radius: .5rem;
 }
-.tela1 .quizzThumbnail p{
-    position: absolute; bottom: 0; left: 1rem;
-    font-weight: 800; font-size: 1rem;
-    color:aliceblue;
+
+.tela1 .quizzThumbnail p {
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    font-weight: 800;
+    font-size: 1rem;
+    color: aliceblue;
 }

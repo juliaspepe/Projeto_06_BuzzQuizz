@@ -156,7 +156,7 @@ function criacaoPerguntasDoQuizz(qtdePerguntas) {
         perguntasManager.innerHTML += atalhoLi;
     }
 
-    perguntasManager.innerHTML += `<button onclick="criarEscolhas()">Prosseguir pra níveis</button>`;
+    perguntasManager.innerHTML += `<button onclick="recolherDadosPerguntas()">Prosseguir pra níveis</button>`;
 }
 function criarEscolhas() {
     // verificar se todos os campos ja estão clicados
@@ -239,6 +239,7 @@ function guardarNiveis() {
     if (porcentagemOk.length == 0) {
         alert('É necessário que algum nível tenha % de acerto mínima igual a 0, por favor, preencha corretamente!')
     }
+    sucessoQuizz();
 }
 
 function verificaPorcentagemMinima(objeto) {
@@ -248,9 +249,7 @@ function verificaPorcentagemMinima(objeto) {
 }
 
 const buttonFinalizarQuizz = document.querySelector('.button-finalizar-quizz')
-buttonFinalizarQuizz.addEventListener('click', sucessoQuizz)
-
-
+buttonFinalizarQuizz.addEventListener('click', guardarNiveis)
 
 // tela 11
 function sucessoQuizz() {
@@ -282,6 +281,8 @@ function salvarQuizz() {
         questions: perguntas,
         levels: niveis
     }
+
+    console.log(quizzPronto);
     
     let enviarQuizz = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", quizzPronto);
     enviarQuizz.then(taCerto);
