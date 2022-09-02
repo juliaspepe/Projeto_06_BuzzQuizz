@@ -19,6 +19,9 @@
     overflow-y: hidden;
     overflow-x: auto;
 }
+.tela1 .baseCriarQuizz.have .baseUsuarioCriarQuizz .listaDeQuizz li{
+    margin-right: 20px;
+}
 .tela1 .baseCriarQuizz.have .baseUsuarioCriarQuizz div {
     display: flex; align-items: center;
     font-size: 1.5rem;
