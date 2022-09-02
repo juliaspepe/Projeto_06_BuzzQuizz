@@ -31,7 +31,6 @@ function iniciarCriarQuizz(){
     alternarTelas(8)
     primeiraParteCriacaoQuizz();
 }
-
 function alternarTelas(tela){
     document.querySelectorAll(".container > div").forEach( tela =>{
         tela.classList.add("hidden");
