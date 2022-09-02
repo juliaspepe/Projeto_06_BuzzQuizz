@@ -66,7 +66,7 @@ function selectAnswer(e){
         getResultQuizz();
     }
 }
-function openQuizz(e, directID){
+function openQuizz(e, directID=undefined){
     window.scroll({top: 0, left: 0, behavior: 'smooth' })
     let promise;
     if(directID){
