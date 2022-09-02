@@ -1,16 +1,14 @@
-
-
-
+let objetoRespostas = {};
 // Tela 8
 function primeiraParteCriacaoQuizz() {
     document.querySelector(".tela8").innerHTML = 
 
     `<h1>Comece pelo começo</h1>
     <div class="inputsPassoUm">
-    <input type="text" value="Você conhece bem a Araci da TopTherm?" placeholder="Título do seu quizz" class="titulo" />
-    <input type="url" value="https://www.1news.ig.com.br/wp-content/uploads/2019/02/211620201902215c6f3f5407919-1200x900.jpg" placeholder="URL da imagem do seu quizz" class="URL" />
-    <input type="text" value="5" placeholder="Quantidade de perguntas do quizz" class="qdPerguntas" />
-    <input type="text" value="5" placeholder="Quantidade de níveis do quizz" class="niveis" />
+    <input type="text" placeholder="Título do seu quizz" class="titulo" />
+    <input type="url"  placeholder="URL da imagem do seu quizz" class="URL" />
+    <input type="text" placeholder="Quantidade de perguntas do quizz" class="qdPerguntas" />
+    <input type="text" placeholder="Quantidade de níveis do quizz" class="niveis" />
     </div>
     <button onclick="criarPerguntas()">Prosseguir pra criar perguntas</button>`
 }
