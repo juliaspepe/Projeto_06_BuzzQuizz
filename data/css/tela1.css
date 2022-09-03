@@ -115,9 +115,10 @@
 
 .tela1 .quizzThumbnail p {
     position: absolute;
-    bottom: 0;
+    bottom: 15px;
     left: 1rem;
-    font-weight: 800;
-    font-size: 1rem;
-    color: aliceblue;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 19px;
+    color: #FFFFFF;
 }

@@ -140,7 +140,7 @@ function criacaoPerguntasDoQuizz(qtdePerguntas) {
         <li class>
             <div> <span>Pergunta ${index + 1}</span><img onClick="expandirEscolha(this)" src="Vector.png"> </div>
             <input type="text" placeholder="Texto da pergunta" />
-            <input type="color" placeholder="Cor de fundo da pergunta" />
+            <input class="barraDeCor" type="color" placeholder="Cor de fundo da pergunta" />
             <p>Resposta Correta</p>
             <input type="text" placeholder="Resposta Correta">
             <input type="url" placeholder="URL da imagem 1"/>
@@ -267,11 +267,11 @@ function sucessoQuizz() {
 }
 
 function acessarQuizz() {
-    alert('acesso ao quizz ok');
+   alert ('oi');
 }
 
 function home() {
-    alert('acesso a home ok');
+    alert ('oi');
 }
 
 // enviar quizz para servidor 
@@ -289,13 +289,15 @@ function salvarQuizz() {
     enviarQuizz.then( retorno =>{
         if(localStorage.getItem('quizz') === ''){
             localStorage.setItem('quizz', JSON.stringify([retorno.data.id]));
+            console.log('guardou')
         }else{
             let localMemory = JSON.parse(localStorage.getItem('quizz'));
             localMemory.push(retorno.data.id);
             localStorage.setItem('quizz', JSON.parse(localMemory));
+            console.log('guardou')
         }
     })
     .catch(()=>{
-        console.error(erro);
+        console.log("erro");
     })
 }

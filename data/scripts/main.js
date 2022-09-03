@@ -7,6 +7,7 @@ let tituloVerificado = false;
 let urlVerificado = false;
 let qdPerguntasVerificado = false;
 let niveisVerificado = false;
+let questionsShuffled = [];
 
 const perguntas = []; 
 const niveis = [];
@@ -32,9 +33,9 @@ function alternarTelas(tela){
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+        [array[i], array[j]] = [array[j], array[i]]
     }
-    return array;
+    questionsShuffled = array;
+    return questionsShuffled;
 }
+
