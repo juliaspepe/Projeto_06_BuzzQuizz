@@ -8,7 +8,8 @@
     <title>BuzzQuizz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="data/css/reset.css">
     <link rel="stylesheet" href="data/css/general.css">
@@ -39,37 +40,22 @@
                 </div>
                 <div class="baseUsuarioCriarQuizz">
                     <div>
-                        <span>Seus Quizzes</span>
                         <ion-icon name="add-circle" onclick="iniciarCriarQuizz()"></ion-icon>
                     </div>
                     <ul class="listaDeQuizz">
-                        <li> <div class="quizzThumbnail" data-id="${quizz.id}">
-                            <p class="quizzTitulo">${quizz.title}</p>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdAa1Np58ZHQyzjiM3T687PGGoyUFFqCjugJx5tuy1naYOjxJgog1ktPMtByRGqmX2CIs&usqp=CAU" alt="quizz">
-                        </div></li>
-                        <li> <div class="quizzThumbnail" data-id="${quizz.id}">
-                            <p class="quizzTitulo">${quizz.title}</p>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdAa1Np58ZHQyzjiM3T687PGGoyUFFqCjugJx5tuy1naYOjxJgog1ktPMtByRGqmX2CIs&usqp=CAU" alt="quizz">
-                        </div></li>
-                        <li> <div class="quizzThumbnail" data-id="${quizz.id}">
-                            <p class="quizzTitulo">${quizz.title}</p>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdAa1Np58ZHQyzjiM3T687PGGoyUFFqCjugJx5tuy1naYOjxJgog1ktPMtByRGqmX2CIs&usqp=CAU" alt="quizz">
-                        </div></li>
-                        <li> <div class="quizzThumbnail" data-id="${quizz.id}">
-                            <p class="quizzTitulo">${quizz.title}</p>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdAa1Np58ZHQyzjiM3T687PGGoyUFFqCjugJx5tuy1naYOjxJgog1ktPMtByRGqmX2CIs&usqp=CAU" alt="quizz">
-                        </div></li>
+
                     </ul>
                 </div>
             </div>
 
-            <span>Seus Quizzes</span>
+            <h2>Todos os Quizzes</h2>
             <div class="baseListaQuizz">
 
             </div>
         </div>
         <div class="tela3 hidden">
             <div class="headerDoQuizz"></div>
+            <div class="textoDoQuizz"></div>
             <ul class="listQuizz"></ul>
         </div>
         <div class="tela8 hidden">
@@ -77,24 +63,28 @@
         <div class="tela9 hidden">
             <h1>Crie suas perguntas</h1>
             <ul class="perguntasManager">
-                
+
             </ul>
         </div>
         <div class="tela10 hidden">
             <h1>Agora, decida os níveis</h1>
             <ul class="ul-niveis">
                 <li class="li-nivel" id="selecionada">
-                    <div class="li-nivel-label"><span>Nível 1</span><img class="" src="Vector.png" alt="" onclick="abreOpcaoNivel(this)" id="1"></div>
+                    <div class="li-nivel-label"><span>Nível 1</span><img class="" src="Vector.png" alt=""
+                            onclick="abreOpcaoNivel(this)" id="1"></div>
                     <div class="li-nivel-input">
-                        <input class="input-nivel titulo-nivel" type="text" placeholder="Título do nível" name="titulo-nivel" id="titulo-nivel">
-                        <input class="input-nivel" type="text" placeholder="% de acerto mínima" name="porcentagem-nivel" id="porcentagem-nivel">
+                        <input class="input-nivel titulo-nivel" type="text" placeholder="Título do nível"
+                            name="titulo-nivel" id="titulo-nivel">
+                        <input class="input-nivel" type="text" placeholder="% de acerto mínima" name="porcentagem-nivel"
+                            id="porcentagem-nivel">
                         <input class="input-nivel" type="text" placeholder="URL da imagem do nível name">
-                        <input class="input-nivel" type="text" placeholder="Descrição do nível" name="descricao-nivel" id="descricao-nivel">
+                        <input class="input-nivel" type="text" placeholder="Descrição do nível" name="descricao-nivel"
+                            id="descricao-nivel">
                     </div>
                 </li>
             </ul>
             <button class="button-finalizar-quizz">Finalizar Quizz</button>
-    
+        </div>
         <div class="tela11 hidden">
         </div>
     </div>
@@ -103,8 +93,8 @@
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="data/scripts/criacaoQuizz.js"></script>
-<script src="data/scripts/main.js"></script>
 <script src="data/scripts/Quizzur.js"></script>
 <script src="data/scripts/meusQuizzes.js"></script>
+<script src="data/scripts/main.js"></script>
 
 </html>

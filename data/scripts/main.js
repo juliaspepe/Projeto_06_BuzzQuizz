@@ -1,21 +1,4 @@
 let quizzes;
-let promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
-promise.then(
-    function(res){
-        quizzes = res;
-        res.data.forEach( (quizz) =>{
-            document.querySelector(".baseListaQuizz").innerHTML += `
-                <div class="quizzThumbnail" data-id="${quizz.id}" onclick="openQuizz(this)">
-                    <p class="quizzTitulo">${quizz.title}</p>
-                    <img src="${quizz.image}" alt="quizz">
-                </div>`
-        })
-    }
-)
-
-
-// informações básicas do quizz (julia) 
-
 let textoTitulo = '';
 let textoURL = '';
 let textoQdPerguntas;
@@ -24,9 +7,14 @@ let tituloVerificado = false;
 let urlVerificado = false;
 let qdPerguntasVerificado = false;
 let niveisVerificado = false;
+let questionsShuffled = [];
 
 const perguntas = []; 
 const niveis = [];
+
+
+updateQuizzList();
+updateMyQuizzList();
 
 
 function iniciarCriarQuizz(){
@@ -45,9 +33,9 @@ function alternarTelas(tela){
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+        [array[i], array[j]] = [array[j], array[i]]
     }
-    return array;
+    questionsShuffled = array;
+    return questionsShuffled;
 }
+
