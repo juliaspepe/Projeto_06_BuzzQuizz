@@ -1,10 +1,10 @@
-<<<<<<< HEAD
-localStorage.setItem('quizz', JSON.stringify({
-  quizz1:11719,
-  quizz2:11718,
-  quizz3:11717,
-  quizz4:11716
-}))
+
+// localStorage.setItem('quizz', JSON.stringify({
+//   quizz1:11719,
+//   quizz2:11718,
+//   quizz3:11717,
+//   quizz4:11716
+// }))
 let ulListaQuizzes = document.querySelector('.baseCriarQuizz');
 
 const requisicao = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
@@ -14,10 +14,8 @@ requisicao.then((quizzes) => {
   allQuizzes = quizzes.data
   let itensLS = localStorage.getItem('quizz')
   let valoresLS = Object.values(JSON.parse(itensLS))
-=======
 
 let ulListaQuizzes = document.querySelector('.listaDeQuizz');
-let allQuizzes = '';
 
 const API = "https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes";
 
@@ -73,11 +71,6 @@ function updateMyQuizzList(){
 
 	}
 }
-
->>>>>>> 6981b8e3bcbef39ddc4de4319a440720864da3b7
-
-
-<<<<<<< HEAD
   myQuizzes.forEach((item) => {
     ulListaQuizzes.innerHTML += `
     <ul>
@@ -91,5 +84,4 @@ function updateMyQuizzList(){
   `
   })
 })
-=======
->>>>>>> 6981b8e3bcbef39ddc4de4319a440720864da3b7
+

@@ -1,27 +1,15 @@
 .tela9 button {
     margin-top: 80px;
 }
-
-<<<<<<< HEAD
 .tela9 input::placeholder{ 
 color:#D1D1D1;
 }
 
-.tela9 ul{
-=======
-.tela9 input {
-    border: 1px solid #D1D1D1;
-    border-radius: .5rem;
+.tela9 {
     width: 100%;
-    height: 3rem;
 }
 
-.tela9 input::placeholder {
-    color: #D1D1D1
-}
-
-.tela9 ul {
->>>>>>> 6981b8e3bcbef39ddc4de4319a440720864da3b7
+.tela9 ul{
     width: 50%;
     list-style: none;
     display: flex;
@@ -38,33 +26,27 @@ color:#D1D1D1;
 
 }
 
-<<<<<<< HEAD
-.expanded div{
-=======
-.tela9 ul li input {
-    padding-left: 20px;
-    margin-bottom: 7px;
-    margin-top: 10px;
-    font-family: 'Roboto';
-    font-style: italic;
-    font-weight: 400;
-    font-size: 19px;
-    line-height: 22px;
-}
 
-.barraDeCor {
-    padding-right: 20px;
-    border-radius: 5px;
-}
-
-
-.tela9 ul li div {
->>>>>>> 6981b8e3bcbef39ddc4de4319a440720864da3b7
+.expanded{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
-<<<<<<< HEAD
+.expanded img{
+    display: none;
+}
+
+.expanded p {
+    font-weight: bold;
+}
+
+.resposta-correta{
+    display: flex;
+    flex-direction: column;
+}
+
+
 .numero-pergunta{
     width: 100%;
 }
@@ -78,9 +60,6 @@ align-items: center;
 .tela9 ul li div span{
     font-weight: bold;
 }
-
-=======
->>>>>>> 6981b8e3bcbef39ddc4de4319a440720864da3b7
 .tela9 ul li input,
 .tela9 ul li p,
 .tela9 ul li.expanded ion-icon {
@@ -94,7 +73,6 @@ align-items: center;
     display: initial;
 }
 
-<<<<<<< HEAD
 .expanded input{
     margin-bottom: 20px;
 }
@@ -113,19 +91,19 @@ align-items: center;
         width: 100%;
     }
 
-    .perguntasManager li {
+    .tela9 ul li {
         width: 100%;
     }
 
     li p {
         font-weight: bold;
     }
-=======
+    
 .perguntasManager span,
 .perguntasManager p {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
->>>>>>> 6981b8e3bcbef39ddc4de4319a440720864da3b7
+    }
 }

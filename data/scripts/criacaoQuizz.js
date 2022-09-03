@@ -86,7 +86,6 @@ function recolherDadosPerguntas(){
     document.querySelectorAll(".perguntasManager li").forEach( every =>{
         let infos = {
             title: "", color: "", answers: [
-
             ]
         }
         let insertInfo = function(index, input, isCorrect){
@@ -138,21 +137,14 @@ function criacaoPerguntasDoQuizz(qtdePerguntas) {
     for (let index = 0; index < qtdePerguntas; index++) {
         let atalhoLi = `
         <li class>
-<<<<<<< HEAD
             <div class="numero-pergunta"> <span>Pergunta ${index+1}</span><img onClick="expandirEscolha(this)" src="../../Vector.png"/> </div>
             <div class="pergunta-input">
                 <input type="text" placeholder="Texto da pergunta" />
                 <input type="color" placeholder="Cor de fundo da pergunta" />
             </div>
-=======
-            <div> <span>Pergunta ${index + 1}</span><img onClick="expandirEscolha(this)" src="Vector.png"> </div>
-            <input type="text" placeholder="Texto da pergunta" />
-            <input class="barraDeCor" type="color" placeholder="Cor de fundo da pergunta" />
->>>>>>> 6981b8e3bcbef39ddc4de4319a440720864da3b7
             <p>Resposta Correta</p>
-            <input type="text" placeholder="Resposta Correta">
-            <input type="url" placeholder="URL da imagem 1"/>
-
+                <input type="text" placeholder="Resposta Correta">
+                <input type="url" placeholder="URL da imagem 1"/>
             <p>Resposta Incorreta</p>
             <input type="text" placeholder="Resposta incorreta 1">
             <input type="url" placeholder="URL da imagem 2"/>
@@ -226,11 +218,7 @@ function guardarNiveis() {
             alert('Preencha porcentagem apenas com números entre 0 - 100 por favor!')
         }
 
-<<<<<<< HEAD
         if(!item.children[2].value){
-=======
-        if (!new URL(item.children[2].value)) {
->>>>>>> 6981b8e3bcbef39ddc4de4319a440720864da3b7
             alert('Digite uma URL válida por favor!')
         }
 
