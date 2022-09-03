@@ -2,18 +2,42 @@
     border: 1px solid #D1D1D1; border-radius: .5rem;
     width: 100%; height: 3rem;
 }
-.tela9 input::placeholder{ color:#D1D1D1}
+
+.tela9 input::placeholder{ 
+color:#D1D1D1;
+}
+
 .tela9 ul{
     width: 50%;
     list-style: none;
 }
+
 .tela9 ul li {
     margin-top: 2rem;
     padding: 2rem;
     border-radius: .5rem;
     background-color: #FFFFFF;
 }
-.tela9 ul li div { display: flex; justify-content: space-between;}
+
+.expanded div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.numero-pergunta{
+    width: 100%;
+}
+
+.tela9 ul li div { 
+display: flex; 
+justify-content: space-between;
+align-items: center;
+}
+
+.tela9 ul li div span{
+    font-weight: bold;
+}
+
 .tela9 ul li input,
 .tela9 ul li p,
 .tela9 ul li.expanded ion-icon  {display: none}
@@ -23,4 +47,31 @@
 .tela9 ul li.expanded div,
 .tela9 ul li.expanded div ion-icon{
     display: initial;
+}
+
+.expanded input{
+    margin-bottom: 20px;
+}
+
+@media(max-width: 1100px){
+
+    .tela9 ul{
+        width: 100%;
+    }
+
+    .container{
+        width: 100%;
+    }
+
+    .tela9{
+        width: 100%;
+    }
+
+    .perguntasManager li {
+        width: 100%;
+    }
+
+    li p {
+        font-weight: bold;
+    }
 }

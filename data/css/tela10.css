@@ -70,3 +70,14 @@
 #selecionada{
     height: 300px;
 }
+
+@media(max-width:1099px){
+
+    .tela10{
+        width: 100%;
+    }
+
+    .ul-niveis{
+        width: 100%;
+    }
+}

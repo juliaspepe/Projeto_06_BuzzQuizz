@@ -93,9 +93,11 @@ function criacaoPerguntasDoQuizz(qtdePerguntas){
     for (let index = 0; index < qtdePerguntas; index++) {
         let atalhoLi = `
         <li class>
-            <div> <span>Pergunta ${index+1}</span><img onClick="expandirEscolha(this)" src="../../Vector.png"/> </div>
-            <input type="text" placeholder="Texto da pergunta" />
-            <input type="color" placeholder="Cor de fundo da pergunta" />
+            <div class="numero-pergunta"> <span>Pergunta ${index+1}</span><img onClick="expandirEscolha(this)" src="../../Vector.png"/> </div>
+            <div class="pergunta-input">
+                <input type="text" placeholder="Texto da pergunta" />
+                <input type="color" placeholder="Cor de fundo da pergunta" />
+            </div>
             <p>Resposta Correta</p>
             <input type="text" placeholder="Resposta Correta">
             <input type=""url placeholder="URL da imagem"/>
@@ -138,7 +140,7 @@ function criarNiveis(lvl){
             </div>
         </li>
     `
-}
+    }
 }
 
 function abreOpcaoNivel(itemClicado){
@@ -173,7 +175,7 @@ function guardarNiveis(){
             alert('Preencha porcentagem apenas com números entre 0 - 100 por favor!')
         }
 
-        if(!new URL(item.children[2].value)){
+        if(!item.children[2].value){
             alert('Digite uma URL válida por favor!')
         }
 

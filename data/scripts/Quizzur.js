@@ -66,7 +66,24 @@ function selectAnswer(e){
         getResultQuizz();
     }
 }
+
+function scrollPerguntasQuizz(lis){
+
+}
+
 function openQuizz(e, directID=undefined){
+
+    setTimeout(() =>{
+        let lisArray = Array.from(lis.children);
+        lisArray.forEach((li) =>{
+            console.log(li.offsetTop)
+        })
+
+        
+        console.log(lisArray)
+    },1000)
+
+
     window.scroll({top: 0, left: 0, behavior: 'smooth' })
     let promise;
     if(directID){
@@ -105,3 +122,5 @@ function openQuizz(e, directID=undefined){
         }
     );
 }
+
+const lis = document.querySelector('.listQuizz');

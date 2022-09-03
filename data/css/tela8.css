@@ -8,6 +8,7 @@
     width: 368.86px;
     height: 54px;
     margin-top: 85px;
+    border: none;
 }
 .inputsPassoUm {
     display: flex;
@@ -30,4 +31,34 @@
     padding-left: 23px;
     font-size: 19px;
     color: #BABABA;
+}
+
+@media(max-width: 1100px){
+
+h1{
+    margin-top: 40px;
+}
+
+.tela8{
+    width: 100%;
+}
+
+.inputsPassoUm{
+    width: 100%;
+}
+
+.inputsPassoUm input{
+    width: 90%;
+}
+
+.tela8 button{
+    margin-top: 50px;
+    width: 90%;
+}
+
+
+
+
+
+
 }
