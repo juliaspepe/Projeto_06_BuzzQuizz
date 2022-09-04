@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 70px;
+    width: 100%;
 }
 .tela8 h1{
     margin-bottom: 40px;
@@ -40,7 +41,7 @@
     color:#c0c0c0
 }
 
-@media(max-width: 760px){
+@media(max-width: 1100px){
     .tela8{
         width: 100%;
     }

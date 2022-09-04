@@ -84,7 +84,7 @@
     height: 300px;
 }
 
-@media(max-width:760px){
+@media(max-width:1100px){
 
     .tela10{
         width: 100%;

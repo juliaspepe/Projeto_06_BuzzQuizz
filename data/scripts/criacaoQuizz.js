@@ -369,8 +369,10 @@ function sucessoQuizz() {
         document.querySelector(".tela11").innerHTML =
     
         `<h1>Seu quizz está pronto!</h1>
-        <img class="imgQuizz" src="${textoURL}"/>
-        <p class="tituloDoQuizz">${textoTitulo}</p>
+        <div class="tumbQuizzCriado">
+            <img class="imgQuizz" src="${textoURL}"/>
+            <p class="tituloDoQuizz">${textoTitulo}</p>
+        </div>
         <button class="botaoAcessar">Acessar Quizz</button>
         <button class="botaoHome" onclick="home()">Voltar para home</button>`
     }
