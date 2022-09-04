@@ -1,14 +1,17 @@
+.tela9 {
+    width: 100%;
+    margin-top: 70px;
+}
+.tela9 h1{
+    margin-bottom: 40px;
+}
 .tela9 button {
     margin-top: 80px;
 }
+
 .tela9 input::placeholder{ 
-color:#D1D1D1;
+    color:#D1D1D1;
 }
-
-.tela9 {
-    width: 100%;
-}
-
 .tela9 ul{
     width: 50%;
     list-style: none;
@@ -16,38 +19,39 @@ color:#D1D1D1;
     flex-direction: column;
     align-items: center;
 }
-
 .tela9 ul li {
     width: 600px;
     margin-top: 2rem;
     padding: 2rem;
-    border-radius: .5rem;
     background-color: #FFFFFF;
-
 }
-
-
-.expanded{
+.tela9 .expanded{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-
-.expanded img{
+.tela9 .expanded img{
     display: none;
 }
-
-.expanded p {
+.tela9 .expanded p {
     font-weight: bold;
 }
-
-.resposta-correta{
+.tela9 .resposta-correta{
     display: flex;
     flex-direction: column;
 }
+.tela9 input{
+    width: 100%;
+    height: 46px;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    margin-bottom: 9px;
+    padding-left: 23px;
+    font-size: 19px;
+    color: #838383;
+}
 
-
-.numero-pergunta{
+.tela9 .numero-pergunta{
     width: 100%;
 }
 
@@ -99,11 +103,11 @@ align-items: center;
         font-weight: bold;
     }
     
-.perguntasManager span,
-.perguntasManager p {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
+    .perguntasManager span,
+    .perguntasManager p {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
     }
 }

@@ -3,6 +3,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 70px;
+}
+.tela8 h1{
+    margin-bottom: 40px;
 }
 .tela8 button {
     width: 368.86px;
@@ -10,7 +14,7 @@
     margin-top: 85px;
     border: none;
 }
-.inputsPassoUm {
+.tela8 .inputsPassoUm {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,7 +26,7 @@
     flex-direction: column;
 }
 
-.inputsPassoUm input {
+.tela8 .inputsPassoUm input {
     width: 564px;
     height: 46px;
     border: 1px solid #D1D1D1;
@@ -30,39 +34,28 @@
     margin-bottom: 9px;
     padding-left: 23px;
     font-size: 19px;
-    color: #BABABA;
-<<<<<<< HEAD
+    color: #838383;
+}
+.tela8 .inputsPassoUm input::placeholder{
+    color:#c0c0c0
 }
 
-@media(max-width: 1100px){
+@media(max-width: 760px){
+    .tela8{
+        width: 100%;
+    }
 
-h1{
-    margin-top: 40px;
-}
+    .tela8 .inputsPassoUm{
+        width: 100%;
+    }
 
-.tela8{
-    width: 100%;
-}
+    .tela8 .inputsPassoUm input{
+        width: 90%;
+    }
 
-.inputsPassoUm{
-    width: 100%;
-}
+    .tela8 .tela8 button{
+        margin-top: 50px;
+        width: 90%;
+    }
 
-.inputsPassoUm input{
-    width: 90%;
-}
-
-.tela8 button{
-    margin-top: 50px;
-    width: 90%;
-}
-
-
-
-
-
-
-=======
-    font-style: italic;
->>>>>>> 6981b8e3bcbef39ddc4de4319a440720864da3b7
 }

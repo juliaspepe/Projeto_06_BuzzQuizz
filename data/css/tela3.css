@@ -8,7 +8,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    object-fit: contain;
+    position: relative;
+}
+.tela3 .headerDoQuizz .imgHeader {
+    width: 100vw;
+    height: 227px;
+    object-fit: cover;
+    position: relative;
+    filter: brightness(50%);
+    opacity: 0.6;
+}
+.tela3 .headerDoQuizz p {
+    position: absolute;
+    font-size: 40px;
+    color: white;
+    font-weight: 400;
 }
 
 .tela3 .listQuizz {
@@ -42,6 +56,7 @@
 .tela3 .QuizzTitle p {
     color: white;
     mix-blend-mode: difference;
+    text-align: center;
 }
 
 .tela3 .ButtonAnswer {
@@ -114,14 +129,6 @@
     font-weight: 400;
 }
 
-.tela3 .imgHeader {
-    width: 100vw;
-    height: 227px;
-    position: relative;
-    filter: brightness(50%);
-    opacity: 0.6;
-}
-
 .tela3 .textoDoQuizz {
     position: absolute;
     bottom: 440px;
@@ -134,4 +141,22 @@
     align-items: center;
     text-align: center;
     color: #FFFFFF;
+}
+
+@media screen and (max-width: 760px) {
+    .tela3 {
+        width: 100%;
+    }
+    .tela3 .listQuizz {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+    .tela3 .ButtonAnswer {
+        width: 45%;
+        height: 115px;
+        margin: 20px 0;
+        object-fit: contain;
+    }
 }

@@ -22,15 +22,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    margin-top: 70px;
 }
-
 .tela10 h1{
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
-.li-nivel{
+.tela10 .ul-niveis{
+    width: 50%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tela10 .li-nivel{
     background-color: rgb(253, 253, 253);
     height: 74px;
+    width: 100%;
     margin-bottom: 20px;
     padding: 15px;
     box-sizing: border-box;
@@ -56,6 +65,9 @@
     box-sizing: border-box;
     border-radius: 5px;
     border: 1px solid #d1d1d1;
+}
+.input-nivel::placeholder{
+    color: #dbdbdb;
     font-style: italic;
 }
 
@@ -72,13 +84,13 @@
     height: 300px;
 }
 
-@media(max-width:1099px){
+@media(max-width:760px){
 
     .tela10{
         width: 100%;
     }
 
-    .ul-niveis{
+    .tela10 .ul-niveis{
         width: 100%;
     }
 }

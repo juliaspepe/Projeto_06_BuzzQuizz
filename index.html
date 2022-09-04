@@ -4,17 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BuzzQuizz</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="data/css/reset.css">
     <link rel="stylesheet" href="data/css/general.css">
     <link rel="stylesheet" href="data/css/tela1.css">
-    <link rel="stylesheet" href="data/css/tela2.css">
     <link rel="stylesheet" href="data/css/tela3.css">
     <link rel="stylesheet" href="data/css/tela4.css">
     <link rel="stylesheet" href="data/css/tela5.css">
@@ -38,8 +36,9 @@
                     <p>Você não criou nenhum quizz ainda :(</p>
                     <button onclick="iniciarCriarQuizz()">Criar Quizz</button>
                 </div>
-                <div class="baseUsuarioCriarQuizz">
-                    <div>
+                <div class="baseUsuarioCriarQuizz">        
+                    <div class="titulo">
+                        <h2>Meus Quizzes</h2>
                         <ion-icon name="add-circle" onclick="iniciarCriarQuizz()"></ion-icon>
                     </div>
                     <ul class="listaDeQuizz">
@@ -48,7 +47,9 @@
                 </div>
             </div>
 
-            <h2>Todos os Quizzes</h2>
+            <div class="titulo">
+                <h2>Todos os Quizzes</h2>
+            </div>
             <div class="baseListaQuizz">
 
             </div>
@@ -69,19 +70,6 @@
         <div class="tela10 hidden">
             <h1>Agora, decida os níveis</h1>
             <ul class="ul-niveis">
-                <li class="li-nivel" id="selecionada">
-                    <div class="li-nivel-label"><span>Nível 1</span><img class="" src="Vector.png" alt=""
-                            onclick="abreOpcaoNivel(this)" id="1"></div>
-                    <div class="li-nivel-input">
-                        <input class="input-nivel titulo-nivel" type="text" placeholder="Título do nível"
-                            name="titulo-nivel" id="titulo-nivel">
-                        <input class="input-nivel" type="text" placeholder="% de acerto mínima" name="porcentagem-nivel"
-                            id="porcentagem-nivel">
-                        <input class="input-nivel" type="text" placeholder="URL da imagem do nível name">
-                        <input class="input-nivel" type="text" placeholder="Descrição do nível" name="descricao-nivel"
-                            id="descricao-nivel">
-                    </div>
-                </li>
             </ul>
             <button class="button-finalizar-quizz">Finalizar Quizz</button>
         </div>
@@ -92,9 +80,11 @@
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 <script src="data/scripts/criacaoQuizz.js"></script>
 <script src="data/scripts/Quizzur.js"></script>
 <script src="data/scripts/meusQuizzes.js"></script>
+<script src="data/scripts/scrollQuizz.js"></script>
 <script src="data/scripts/main.js"></script>
 
 </html>

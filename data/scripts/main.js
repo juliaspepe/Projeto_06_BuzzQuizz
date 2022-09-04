@@ -9,13 +9,11 @@ let qdPerguntasVerificado = false;
 let niveisVerificado = false;
 let questionsShuffled = [];
 
-const perguntas = []; 
-const niveis = [];
-
+let perguntas = []; 
+let niveis = [];
 
 updateQuizzList();
 updateMyQuizzList();
-
 
 function iniciarCriarQuizz(){
     alternarTelas(8)

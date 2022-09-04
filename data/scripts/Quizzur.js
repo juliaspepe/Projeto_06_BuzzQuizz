@@ -97,8 +97,8 @@ function openQuizz(e, directID=undefined){
         (quizz)=>{
             alternarTelas(3);
             quizzGame.data = quizz.data;
-            document.querySelector(".textoDoQuizz").innerHTML = quizz.data.title;
-            document.querySelector(".headerDoQuizz").innerHTML = `<img class=imgHeader src="${quizz.data.image}"/>`;
+            document.querySelector(".headerDoQuizz").innerHTML += `<img class=imgHeader src="${quizz.data.image}"/>`;
+            document.querySelector(".headerDoQuizz").innerHTML += `<p>${quizz.data.title}</p>`;
 
             let listQuizz = document.querySelector(".listQuizz")
             listQuizz.innerHTML = "";
