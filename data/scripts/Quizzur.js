@@ -45,6 +45,7 @@ function getResultQuizz(){
         `;
 }
 function selectAnswer(e){
+    scrollarProxima(e.parentNode.parentNode)
     if(e.classList.contains("isCorrectAnswer") || e.classList.contains("isWrongAnswer")){
         return false;
     }else{
@@ -67,21 +68,7 @@ function selectAnswer(e){
     }
 }
 
-function scrollPerguntasQuizz(lis){
-
-}
-
 function openQuizz(e, directID=undefined){
-    setTimeout(() =>{
-        let lisArray = Array.from(lis.children);
-        lisArray.forEach((li) =>{
-            console.log(li.offsetTop)
-        })
-
-        
-        console.log(lisArray)
-    },1000)
-
 
     window.scroll({top: 0, left: 0, behavior: 'smooth' })
     let promise;
@@ -101,7 +88,7 @@ function openQuizz(e, directID=undefined){
 
             let listQuizz = document.querySelector(".listQuizz")
             listQuizz.innerHTML = "";
-
+            let contadorPergunta = 1
             quizz.data.questions.forEach(answer => {
                 let perguntasHTML = "";
                 quizzGame.qtdePerguntas++;
@@ -111,13 +98,14 @@ function openQuizz(e, directID=undefined){
                         perguntasHTML += `<div onclick="selectAnswer(this)" class="ButtonAnswer" data-is="${every.isCorrectAnswer}"><img src="${every.image}" /><p>${every.text}</p></div>`
                     })
                 listQuizz.innerHTML += `
-                    <li>
+                    <li class="respostaScroll${contadorPergunta}">
                         <div style="background-color: ${answer.color}" class="QuizzTitle"><p>${answer.title}</p></div>
                         <div class="QuizzAnswers">
                             ${ perguntasHTML }
                         </div>
                     </li>
                 `;
+                contadorPergunta++
             });
             //
         }
