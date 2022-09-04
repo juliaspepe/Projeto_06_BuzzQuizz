@@ -45,7 +45,7 @@ function updateMyQuizzList(){
 				console.log(quizzes)
 					ulListaQuizzes.innerHTML += `
 					<li>
-						<div class="quizzThumbnail" data-id="${a[0]}" data-key="${a[1]}"  onclick="openQuizz(this, undefined)">
+						<div class="quizzThumbnail" data-id="${a[0]}" data-key="${a[1]}">
 							<div class="edicoesQuizz">
 								<ion-icon name="create-outline" onclick="iniciarCriarQuizz({mode: 'edition', id:'${a[0]}', key:'${a[1]}'})"></ion-icon>
 								<ion-icon name="trash-outline" onclick="deletarQuizz(${a[0]}, '${a[1]}')"></ion-icon>
@@ -55,6 +55,12 @@ function updateMyQuizzList(){
 						</div>
 					</li>
 				  `
+				  ulListaQuizzes.querySelectorAll('.quizzThumbnail').forEach(thumbnail =>{
+						thumbnail.addEventListener('click', function(e){
+							e.stopPropagation();
+							openQuizz(e.target);
+						});
+				  })
 			});
 
 		})

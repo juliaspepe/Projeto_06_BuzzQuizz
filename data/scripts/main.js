@@ -25,7 +25,6 @@ function iniciarCriarQuizz(mode){
     alternarTelas(8)
     primeiraParteCriacaoQuizz(mode);
 }
-
 function alternarTelas(tela){
     document.querySelectorAll(".container > div").forEach( tela =>{
         tela.classList.add("hidden");
@@ -43,3 +42,6 @@ function shuffleArray(array) {
     return questionsShuffled;
 }
 
+function fixDoubleQuizzClicked(e, element){
+    return (e.target.className === element.className )? true: false;
+}

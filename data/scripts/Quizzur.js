@@ -106,7 +106,7 @@ function openQuizz(e, directID=undefined){
                 let perguntasHTML = "";
                 quizzGame.qtdePerguntas++;
                 const arrtoshf = answer.answers;
-               const arrshuffled = shuffleArray(arrtoshf);
+                const arrshuffled = shuffleArray(arrtoshf);
                     arrshuffled.forEach(every =>{
                         perguntasHTML += `<div onclick="selectAnswer(this)" class="ButtonAnswer" data-is="${every.isCorrectAnswer}"><img src="${every.image}" /><p>${every.text}</p></div>`
                     })
