@@ -111,6 +111,15 @@
     font-size: 19px;
     color: #FFFFFF;
 }
+.tela1 .quizzThumbnail .edicoesQuizz{
+    z-index: 4; 
+    position: absolute; top: 10px; right: 0;
+    display: flex; flex-direction: column; justify-content: space-around;
+    background-color: #EC362D; color:aliceblue;
+    border-radius: 1rem 0 0 1rem;
+    padding: 0 10px;
+    height: 98px;
+}
 .tela1 > .titulo {
     width: 100%;
     height: 120px;

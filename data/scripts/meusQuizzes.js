@@ -55,6 +55,10 @@ function updateMyQuizzList(){
 					ulListaQuizzes.innerHTML += `
 					<li>
 						<div class="quizzThumbnail" data-id="${quizzes.data.id}"  onclick="openQuizz(this)">
+							<div class="edicoesQuizz">
+								<ion-icon name="create-outline"></ion-icon>
+								<ion-icon name="trash-outline"></ion-icon>
+							</div>
 							<p class="quizzTitulo">${quizzes.data.title}</p>
 							<img src="${quizzes.data.image}" alt="quizz">
 						</div>
