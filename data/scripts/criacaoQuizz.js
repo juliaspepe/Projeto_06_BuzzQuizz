@@ -14,10 +14,11 @@ function primeiraParteCriacaoQuizz(param) {
 
     if(param.mode === "creation"){
         bonusStatus.mode = "creation";
+
     }else if(param.mode === "edition"){
         bonusStatus.mode = "edition"
-        bonusStatus.id = param.id;
-        bonusStatus.key = param.key;
+        bonusStatus['id'] = param.id;
+        bonusStatus['key'] = param.key;
         alternarTelas(9);
         importarQuizzEditor(bonusStatus.id);
     }
@@ -190,6 +191,8 @@ function criarEscolhas() {
     if(bonusStatus.mode === "creation"){
         alternarTelas(10);
         criarNiveis(textoNiveis);
+    }else if(bonusStatus.mode === "edition"){
+        alternarTelas(10);
     }
 }
 function criacaoPerguntasDoQuizz(qtdePerguntas) {
@@ -396,36 +399,6 @@ function salvarQuizz() {
     enviarQuizz.then( retorno =>{
         addQuizzDataStorage(retorno.data.id, retorno.data.key);
         document.querySelector('.tela11 .botaoAcessar').addEventListener('click', ()=>{ openQuizz("", retorno.data.id) });
-    })
-    .catch( erro =>{
-        console.error(erro);
-    })
-}
-
-function editarQuizz(id, key) {
-    let quizzPronto = {
-        title: objetoRespostas.title,
-        image: objetoRespostas.image,
-        questions: perguntas,
-        levels: niveis
-    }
-
-    console.log(quizzPronto);
-    
-    let enviarQuizz = axios.put(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`, {headers: {"Secret-Key": key}}, quizzPronto);
-    enviarQuizz.then( retorno =>{
-        console.log(retorno)
-    })
-    .catch( erro =>{
-        console.error(erro);
-    })
-}
-function deletarQuizz(id, key) {
-    
-    let enviarQuizz = axios.delete(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`, {headers: {"Secret-Key": key}});
-    enviarQuizz.then( retorno =>{
-        console.log(retorno)
-        localStorage.setItem('quizz', JSON.stringify( getQuizzDataStorage().filter( a => a[0] != id) ));
     })
     .catch( erro =>{
         console.error(erro);

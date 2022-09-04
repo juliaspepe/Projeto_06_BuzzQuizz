@@ -15,7 +15,9 @@ let niveis = [];
 let bonusStatus = {
     mode: "creation", // creation / edition
     id: 0,
-    key: ""
+    key: "",
+    title: "",
+    image: ""
 } 
 
 updateQuizzList();

@@ -1,6 +1,7 @@
 .tela1 {   
     margin-top: 70px;
 }
+ion-icon:hover{ cursor: pointer }
 .tela1 .baseCriarQuizz {
     margin: 0;
     padding: 0;
