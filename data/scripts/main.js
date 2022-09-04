@@ -12,12 +12,18 @@ let questionsShuffled = [];
 let perguntas = []; 
 let niveis = [];
 
+let bonusStatus = {
+    mode: "creation", // creation / edition
+    id: 0,
+    key: ""
+} 
+
 updateQuizzList();
 updateMyQuizzList();
 
-function iniciarCriarQuizz(){
+function iniciarCriarQuizz(mode){
     alternarTelas(8)
-    primeiraParteCriacaoQuizz();
+    primeiraParteCriacaoQuizz(mode);
 }
 
 function alternarTelas(tela){

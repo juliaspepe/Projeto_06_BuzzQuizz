@@ -1,29 +1,20 @@
 
 let ulListaQuizzes = document.querySelector('.listaDeQuizz');
 
-// const requisicao = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
-// let allQuizzes = '';
-
-// requisicao.then((quizzes) => {
-//   allQuizzes = quizzes.data
-//   let itensLS = localStorage.getItem('quizz')
-//   let valoresLS = Object.values(JSON.parse(itensLS))
-
-// let ulListaQuizzes = document.querySelector('.listaDeQuizz');
-
 const API = "https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes";
 
 
 function getQuizzDataStorage(){
-	let dataStg = JSON.parse( localStorage.getItem("quizz"));
-
-	let corrector = (typeof dataStg[0] === 'number') ? dataStg: JSON.stringify( new Array() );
-	return corrector;
+	if(localStorage.getItem('quizz') === ''){
+		localStorage.setItem('quizz', JSON.stringify([]));
+	}
+	let dataStg = JSON.parse(localStorage.getItem("quizz"));
+	return dataStg;
 }
 
-function addQuizzDataStorage(quizzID) {
+function addQuizzDataStorage(quizzID, key) {
 	let data = getQuizzDataStorage();
-	data.push( quizzID );
+	data.push( [quizzID, key] );
 	localStorage.setItem('quizz', JSON.stringify( data ));
 
 	return data;
@@ -44,20 +35,20 @@ function updateQuizzList() {
 	)
 }
 function updateMyQuizzList(){
-	let quizzMemoryDataStorage = getQuizzDataStorage()
+	let quizzMemoryDataStorage = getQuizzDataStorage(); 
 	if(quizzMemoryDataStorage.length !== 0){
 		document.querySelector(".baseCriarQuizz").classList.add("have");
 		quizzMemoryDataStorage.forEach(a=>{
 
-			let requisicao = axios.get(`${API}/${a}`);
+			let requisicao = axios.get(`${API}/${a[0]}`);
 			requisicao.then((quizzes) => {
 				console.log(quizzes)
 					ulListaQuizzes.innerHTML += `
 					<li>
-						<div class="quizzThumbnail" data-id="${quizzes.data.id}"  onclick="openQuizz(this)">
+						<div class="quizzThumbnail" data-id="${a[0]}" data-key="${a[1]}"  onclick="openQuizz(this, undefined)">
 							<div class="edicoesQuizz">
-								<ion-icon name="create-outline"></ion-icon>
-								<ion-icon name="trash-outline"></ion-icon>
+								<ion-icon name="create-outline" onclick="iniciarCriarQuizz({mode: 'edition', id:'${a[0]}', key:'${a[1]}'})"></ion-icon>
+								<ion-icon name="trash-outline" onclick="deletarQuizz(${a[0]}, '${a[1]}')"></ion-icon>
 							</div>
 							<p class="quizzTitulo">${quizzes.data.title}</p>
 							<img src="${quizzes.data.image}" alt="quizz">
@@ -70,16 +61,3 @@ function updateMyQuizzList(){
 
 	}
 }
-// myQuizzes.forEach((item) => {
-//     ulListaQuizzes.innerHTML += `
-//     <ul>
-//         <li>
-//           <div class="quizzThumbnail" data-id="${item.id}">
-//               <p class="quizzTitulo">${item.title}</p>
-//               <img src="${item.image}" alt="quizz">
-//           </div>
-//         </li>
-//     </ul>
-//   `
-//   })
-// })

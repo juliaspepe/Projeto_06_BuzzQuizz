@@ -1,16 +1,26 @@
 let objetoRespostas = {};
 // Tela 8
-function primeiraParteCriacaoQuizz() {
+function primeiraParteCriacaoQuizz(param) {
     document.querySelector(".tela8").innerHTML =
+        
+    `<h1>Comece pelo começo</h1>
+    <div class="inputsPassoUm">
+    <input type="text" placeholder="Título do seu quizz" class="titulo" />
+    <input type="url" placeholder="URL da imagem do seu quizz" class="URL" />
+    <input type="text" placeholder="Quantidade de perguntas do quizz" class="qdPerguntas" />
+    <input type="text" placeholder="Quantidade de níveis do quizz" class="niveis" />
+    </div>
+    <button onclick="criarPerguntas()">Prosseguir pra criar perguntas</button>`
 
-        `<h1>Comece pelo começo</h1>
-        <div class="inputsPassoUm">
-            <input type="text" placeholder="Título do seu quizz" class="titulo" />
-            <input type="url" placeholder="URL da imagem do seu quizz" class="URL" />
-            <input type="text" placeholder="Quantidade de perguntas do quizz" class="qdPerguntas" />
-            <input type="text" placeholder="Quantidade de níveis do quizz" class="niveis" />
-        </div>
-        <button onclick="criarPerguntas()">Prosseguir pra criar perguntas</button>`
+    if(param.mode === "creation"){
+        bonusStatus.mode = "creation";
+    }else if(param.mode === "edition"){
+        bonusStatus.mode = "edition"
+        bonusStatus.id = param.id;
+        bonusStatus.key = param.key;
+        alternarTelas(9);
+        importarQuizzEditor(bonusStatus.id);
+    }
 }
 
 function verificarTitulo() {
@@ -74,9 +84,10 @@ function criarPerguntas() {
     console.log(objetoRespostas);
 
     if (tituloVerificado === true && urlVerificado === true && qdPerguntasVerificado === true && niveisVerificado === true) {
-        alternarTelas(9);
-        criacaoPerguntasDoQuizz(textoQdPerguntas);
+            alternarTelas(9);
+            criacaoPerguntasDoQuizz(textoQdPerguntas);
     }
+
 }
 
 
@@ -176,8 +187,10 @@ function recolherDadosPerguntas(){
     else{ perguntas = [] }
 }
 function criarEscolhas() {
-    alternarTelas(10);
-    criarNiveis(textoNiveis);
+    if(bonusStatus.mode === "creation"){
+        alternarTelas(10);
+        criarNiveis(textoNiveis);
+    }
 }
 function criacaoPerguntasDoQuizz(qtdePerguntas) {
     let perguntasManager = document.querySelector(".perguntasManager");
@@ -227,6 +240,7 @@ function criacaoPerguntasDoQuizz(qtdePerguntas) {
 const ulNiveis = document.querySelector('.ul-niveis');
 
 function criarNiveis(lvl) {
+    ulNiveis.innerHTML = "";
     for (let i = 1; i <= lvl; i++) {
         ulNiveis.innerHTML += `
         <li class="li-nivel">
@@ -345,16 +359,22 @@ buttonFinalizarQuizz.addEventListener('click', guardarNiveis)
 
 // tela 11
 function sucessoQuizz() {
-    alternarTelas(11);
-    salvarQuizz();
-
-    document.querySelector(".tela11").innerHTML =
-
-    `<h1>Seu quizz está pronto!</h1>
-    <img class="imgQuizz" src="${textoURL}"/>
-    <p class="tituloDoQuizz">${textoTitulo}</p>
-    <button class="botaoAcessar">Acessar Quizz</button>
-    <button class="botaoHome" onclick="home()">Voltar para home</button>`
+    if(bonusStatus.mode == "creation"){
+        salvarQuizz();
+        alternarTelas(11);
+    
+        document.querySelector(".tela11").innerHTML =
+    
+        `<h1>Seu quizz está pronto!</h1>
+        <img class="imgQuizz" src="${textoURL}"/>
+        <p class="tituloDoQuizz">${textoTitulo}</p>
+        <button class="botaoAcessar">Acessar Quizz</button>
+        <button class="botaoHome" onclick="home()">Voltar para home</button>`
+    }
+    else if(bonusStatus.mode == "edition"){
+        editarQuizz(bonusStatus.id, bonusStatus.key);
+        alternarTelas(1);
+    }
 }
 
 
@@ -362,7 +382,6 @@ function home() {
     alternarTelas(1);
 }
 
-// enviar quizz para servidor 
 function salvarQuizz() {
     let quizzPronto = {
         title: objetoRespostas.title,
@@ -375,10 +394,41 @@ function salvarQuizz() {
     
     let enviarQuizz = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", quizzPronto);
     enviarQuizz.then( retorno =>{
-        addQuizzDataStorage(retorno.data.id);
+        addQuizzDataStorage(retorno.data.id, retorno.data.key);
         document.querySelector('.tela11 .botaoAcessar').addEventListener('click', ()=>{ openQuizz("", retorno.data.id) });
     })
     .catch( erro =>{
         console.error(erro);
     })
 }
+
+function editarQuizz(id, key) {
+    let quizzPronto = {
+        title: objetoRespostas.title,
+        image: objetoRespostas.image,
+        questions: perguntas,
+        levels: niveis
+    }
+
+    console.log(quizzPronto);
+    
+    let enviarQuizz = axios.put(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`, {headers: {"Secret-Key": key}}, quizzPronto);
+    enviarQuizz.then( retorno =>{
+        console.log(retorno)
+    })
+    .catch( erro =>{
+        console.error(erro);
+    })
+}
+function deletarQuizz(id, key) {
+    
+    let enviarQuizz = axios.delete(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`, {headers: {"Secret-Key": key}});
+    enviarQuizz.then( retorno =>{
+        console.log(retorno)
+        localStorage.setItem('quizz', JSON.stringify( getQuizzDataStorage().filter( a => a[0] != id) ));
+    })
+    .catch( erro =>{
+        console.error(erro);
+    })
+}
+

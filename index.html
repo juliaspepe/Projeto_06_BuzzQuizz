@@ -30,12 +30,12 @@
             <div class="baseCriarQuizz">
                 <div class="baseVaziaCriarQuizz">
                     <p>Você não criou nenhum quizz ainda :(</p>
-                    <button onclick="iniciarCriarQuizz()">Criar Quizz</button>
+                    <button onclick="iniciarCriarQuizz({mode: 'creation'})">Criar Quizz</button>
                 </div>
                 <div class="baseUsuarioCriarQuizz">        
                     <div class="titulo">
                         <h2>Meus Quizzes</h2>
-                        <ion-icon name="add-circle" onclick="iniciarCriarQuizz()"></ion-icon>
+                        <ion-icon name="add-circle" onclick="iniciarCriarQuizz({mode: 'creation'})"></ion-icon>
                     </div>
                     <ul class="listaDeQuizz">
 
@@ -76,7 +76,7 @@
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+<script src="data/scripts/editarQuizz.js"></script>
 <script src="data/scripts/criacaoQuizz.js"></script>
 <script src="data/scripts/Quizzur.js"></script>
 <script src="data/scripts/meusQuizzes.js"></script>

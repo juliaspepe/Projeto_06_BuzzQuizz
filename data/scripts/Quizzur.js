@@ -72,7 +72,6 @@ function scrollPerguntasQuizz(lis){
 }
 
 function openQuizz(e, directID=undefined){
-
     setTimeout(() =>{
         let lisArray = Array.from(lis.children);
         lisArray.forEach((li) =>{
