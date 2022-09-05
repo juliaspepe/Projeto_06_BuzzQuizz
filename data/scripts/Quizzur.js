@@ -30,7 +30,7 @@ function getResultQuizz(){
         })
         return best;
     }
-    listQuizz.innerHTML += `<li>
+    listQuizz.innerHTML += `<li data-identifier="quizz-result">
             <div style="background-color: #ec362d" class="QuizzTitle"><p>${currentLevel} de acerto: ${ getLevel("title") }</p></div>
             <div class="QuizzResults">
                 <img src="${ getLevel("image") }" />
@@ -94,10 +94,10 @@ function openQuizz(e, directID=undefined){
                 const arrtoshf = answer.answers;
                 const arrshuffled = shuffleArray(arrtoshf);
                     arrshuffled.forEach(every =>{
-                        perguntasHTML += `<div onclick="selectAnswer(this)" class="ButtonAnswer" data-is="${every.isCorrectAnswer}"><img src="${every.image}" /><p>${every.text}</p></div>`
+                        perguntasHTML += `<div data-identifier="answer" onclick="selectAnswer(this)" class="ButtonAnswer" data-is="${every.isCorrectAnswer}"><img src="${every.image}" /><p>${every.text}</p></div>`
                     })
                 listQuizz.innerHTML += `
-                    <li class="respostaScroll${contadorPergunta}">
+                    <li data-identifier="question" class="respostaScroll${contadorPergunta}">
                         <div style="background-color: ${answer.color}" class="QuizzTitle"><p>${answer.title}</p></div>
                         <div class="QuizzAnswers">
                             ${ perguntasHTML }
