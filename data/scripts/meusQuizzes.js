@@ -5,10 +5,11 @@ const API = "https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes";
 
 
 function getQuizzDataStorage(){
-	if(localStorage.getItem('quizz') === ''){
-		localStorage.setItem('quizz', JSON.stringify([]));
+	if(!localStorage.quizz || typeof localStorage.quizz[0][0] === 'number' && typeof localStorage.quizz[0][1] === 'string'){
+		localStorage.quizz = JSON.stringify( new Array() );
 	}
-	let dataStg = JSON.parse(localStorage.getItem("quizz"));
+
+	let dataStg = JSON.parse( localStorage.quizz );
 	return dataStg;
 }
 
