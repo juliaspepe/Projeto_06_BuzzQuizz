@@ -23,6 +23,7 @@ let bonusStatus = {
 updateQuizzList();
 updateMyQuizzList();
 
+
 function iniciarCriarQuizz(mode){
     alternarTelas(8)
     primeiraParteCriacaoQuizz(mode);

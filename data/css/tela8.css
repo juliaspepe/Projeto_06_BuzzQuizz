@@ -36,7 +36,10 @@
     padding-left: 23px;
     font-size: 19px;
     color: #838383;
+    font-family: 'Roboto';
+    font-style: italic;
 }
+
 .tela8 .inputsPassoUm input::placeholder{
     color:#c0c0c0
 }

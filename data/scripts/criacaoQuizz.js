@@ -202,7 +202,7 @@ function criacaoPerguntasDoQuizz(qtdePerguntas) {
     for (let index = 0; index < qtdePerguntas; index++) {
         let atalhoLi = `
         <li class>
-            <div class="numero-pergunta"> <span>Pergunta ${index+1}</span><img onClick="expandirEscolha(this)" src="../../Vector.png"/> </div>
+            <div class="numero-pergunta"> <span>Pergunta ${index+1}</span><img onClick="expandirEscolha(this)" src="Vector.png"/> </div>
             <div class="pergunta-input">
                 <input name="texto-pergunta" type="text" placeholder="Texto da pergunta" />
                 <input name="cor-pergunta" type="color" placeholder="Cor de fundo da pergunta" />
