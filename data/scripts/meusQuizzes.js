@@ -28,13 +28,15 @@ function loading(){
 
 function updateQuizzList() {
 	setInterval(loading, 2000);
+	let base = document.querySelector(".baseListaQuizz");
+	base.innerHTML = "";
 
 	let promise = axios.get(API);
 	promise.then(
 		function(res){
 			quizzes = res;
 			res.data.forEach( (quizz) =>{
-				document.querySelector(".baseListaQuizz").innerHTML += `
+				base.innerHTML += `
 					<div data-identifier="quizz-card" class="quizzThumbnail" data-id="${quizz.id}" onclick="openQuizz(this)">
 						<p class="quizzTitulo">${quizz.title}</p>
 						<img src="${quizz.image}" alt="quizz">
@@ -44,15 +46,15 @@ function updateQuizzList() {
 	)
 }
 function updateMyQuizzList(){
-
 	let quizzMemoryDataStorage = getQuizzDataStorage(); 
+	ulListaQuizzes.innerHTML = "";
+
 	if(quizzMemoryDataStorage.length !== 0){
 		document.querySelector(".baseCriarQuizz").classList.add("have");
 		quizzMemoryDataStorage.forEach(a=>{
 
 			let requisicao = axios.get(`${API}/${a[0]}`);
 			requisicao.then((quizzes) => {
-				console.log(quizzes)
 					ulListaQuizzes.innerHTML += `
 					<li>
 						<div data-identifier="quizz-card" class="quizzThumbnail" data-id="${a[0]}" data-key="${a[1]}">
@@ -74,7 +76,6 @@ function updateMyQuizzList(){
 				  })
 			});
 			requisicao.catch(quizzes =>{
-				console.log(quizzes);
 				if(quizzes.response.status === 404){
 					localStorage.quizz = JSON.stringify( getQuizzDataStorage().filter( b => b[0] != a[0]) );
 				}

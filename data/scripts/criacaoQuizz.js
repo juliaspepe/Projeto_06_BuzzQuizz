@@ -44,14 +44,13 @@ function verificarTitulo() {
     }
 }
 
-function adicionarURL(){
-    textoURL = document.querySelector('#url-passoum').value;
+function adicionarURL(url){
+    textoURL = url;
     urlVerificado = true;
 }
 function verificarURL(url) {
-    textoURL = url
     try{
-        if(new URL(textoURL)) { return true }
+        if(new URL(url)) { return true }
     } catch(err) {
         return false
         console.error(err)
@@ -90,7 +89,7 @@ function criarPerguntas() {
     verificarQdPerguntas();
     verificarNiveis();
     if(verificarURL(link.value)){
-        adicionarURL();
+        adicionarURL(link.value);
         link.style.backgroundColor = "transparent";
         link.labels[0].classList.remove("show");
     }else{
@@ -450,7 +449,7 @@ function sucessoQuizz() {
         `<h1>Seu quizz está pronto!</h1>
         <div class="tumbQuizzCriado">
             <img class="imgQuizz" src="${textoURL}"/>
-            <p class="tituloDoQuizz">${textoTitulo}</p>
+            <p class="tituloDoQuizz">${textoTitulo.value}</p>
         </div>
         <button class="botaoAcessar">Acessar Quizz</button>
         <button class="botaoHome" onclick="home()">Voltar para home</button>`
@@ -464,6 +463,8 @@ function sucessoQuizz() {
 
 function home() {
     alternarTelas(1);
+    updateQuizzList();
+    updateMyQuizzList();
 }
 
 function salvarQuizz() {
