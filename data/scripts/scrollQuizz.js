@@ -3,7 +3,7 @@ function scrollarProxima(li) {
     const elementoScroll = document.querySelector(`.respostaScroll${proximoElemento}`)
     if(elementoScroll){
       setTimeout(() => {
-        elementoScroll.scrollIntoView({behavior: 'smooth'})
+        elementoScroll.scrollIntoView({behavior: 'smooth', block: "center"})
       }, 2000)
     }
 }
