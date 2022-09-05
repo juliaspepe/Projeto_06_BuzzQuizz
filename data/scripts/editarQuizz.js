@@ -71,13 +71,14 @@ function editarQuizz(id, key) {
 }
 function deletarQuizz(id, key) {
     
-    let enviarQuizz = axios.delete(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`, {'headers': {"Secret-Key": key}});
-    enviarQuizz.then( retorno =>{
-        console.log(retorno)
-        localStorage.setItem('quizz', JSON.stringify( getQuizzDataStorage().filter( a => a[0] != id) ));
-        window.reload();
-    })
-    .catch( erro =>{
-        console.error(erro);
-    })
+    if(confirm("Deseja mesmo excluir seu Quizz?")){
+        let enviarQuizz = axios.delete(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`, {'headers': {"Secret-Key": key}});
+        enviarQuizz.then( retorno =>{
+            localStorage.setItem('quizz', JSON.stringify( getQuizzDataStorage().filter( a => a[0] != id) ));
+            window.location.reload();
+        })
+        .catch( erro =>{
+            console.error(erro);
+        })
+    }
 }

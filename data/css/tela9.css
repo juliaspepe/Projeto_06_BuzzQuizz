@@ -73,9 +73,11 @@ align-items: center;
 }
 .tela9 ul li input,
 .tela9 ul li p,
-.tela9 ul li.expanded ion-icon {
+.tela9 ul li.expanded ion-icon,
+.tela9 ul li label{
     display: none
 }
+.tela9 ul li.expanded label.show { display: block; width: 90%; }
 
 .tela9 ul li.expanded input,
 .tela9 ul li.expanded p,

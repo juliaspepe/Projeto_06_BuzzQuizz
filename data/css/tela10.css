@@ -49,6 +49,8 @@
     flex-direction: column;
 }
 
+.tela10 ul li#selecionada label.show { display: block; width: 90%; }
+
 .li-nivel-input{
     margin-top: 20px;
     height: 220px;

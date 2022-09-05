@@ -5,10 +5,18 @@ function primeiraParteCriacaoQuizz(param) {
         
     `<h1>Comece pelo começo</h1>
     <div class="inputsPassoUm">
-    <input type="text" placeholder="Título do seu quizz" class="titulo" />
-    <input type="url" placeholder="URL da imagem do seu quizz" class="URL" />
-    <input type="text" placeholder="Quantidade de perguntas do quizz" class="qdPerguntas" />
-    <input type="text" placeholder="Quantidade de níveis do quizz" class="niveis" />
+    <label for="titulo-passoum">O Título deve possuir enre 20 e 65 caracteres.</label>
+    <input id="titulo-passoum" type="text" placeholder="Título do seu quizz" class="titulo" />
+
+    <label for="url-passoum">O URL é inválido.</label>
+    <input id="url-passoum" type="url" placeholder="URL da imagem do seu quizz" class="URL" />
+
+    <label for="perguntas-passoum">É permitido no minimo 3 perguntas.</label>
+    <input id="perguntas-passoum" type="text" placeholder="Quantidade de perguntas do quizz" class="qdPerguntas" />
+
+    <label for="niveis-passoum">É permitido no minimo 2 niveis.</label>
+    <input id="niveis-passoum" type="text" placeholder="Quantidade de níveis do quizz" class="niveis" />
+
     </div>
     <button onclick="criarPerguntas()">Prosseguir pra criar perguntas</button>`
 
@@ -25,73 +33,86 @@ function primeiraParteCriacaoQuizz(param) {
 }
 
 function verificarTitulo() {
-    textoTitulo = document.querySelector('.inputsPassoUm .titulo').value;
-    if (textoTitulo.length > 20 && textoTitulo.length < 65) {
+    textoTitulo = document.querySelector('#titulo-passoum');
+    if (textoTitulo.value.length > 20 && textoTitulo.value.length < 65) {
         tituloVerificado = true;
+        textoTitulo.style.backgroundColor = "transparent";
+        textoTitulo.labels[0].classList.remove("show");
     } else {
-        deuErro();
+        textoTitulo.style.backgroundColor = "#FFE9E9";
+        textoTitulo.labels[0].classList.add("show");
     }
 }
 
 function adicionarURL(){
-    textoURL = document.querySelector('.inputsPassoUm .URL').value;
+    textoURL = document.querySelector('#url-passoum').value;
     urlVerificado = true;
 }
 function verificarURL(url) {
     textoURL = url
     try{
         if(new URL(textoURL)) { return true }
-    } catch {
-        deuErro();
+    } catch(err) {
+        return false
+        console.error(err)
     }
 }
 
 function verificarQdPerguntas() {
-    textoQdPerguntas = Number(document.querySelector('.qdPerguntas').value);
-    if (textoQdPerguntas >= 3) {
+    textoQdPerguntas = document.querySelector('#perguntas-passoum');
+    if (Number(textoQdPerguntas.value) >= 3) {
         qdPerguntasVerificado = true;
+        textoQdPerguntas.style.backgroundColor = "transparent";
+        textoQdPerguntas.labels[0].classList.remove("show");
     } else {
-        deuErro();
+        textoQdPerguntas.style.backgroundColor = "#FFE9E9";
+        textoQdPerguntas.labels[0].classList.add("show");
     }
 }
 
 function verificarNiveis() {
-    textoNiveis = Number(document.querySelector('.niveis').value);
-    if (textoNiveis >= 2) {
+    textoNiveis = document.querySelector('#niveis-passoum');
+    if (Number(textoNiveis.value) >= 2) {
         niveisVerificado = true;
+        textoNiveis.style.backgroundColor = "transparent";
+        textoNiveis.labels[0].classList.remove("show");
     } else {
-        deuErro();
+        textoNiveis.style.backgroundColor = "#FFE9E9";
+        textoNiveis.labels[0].classList.add("show");
     }
 }
 
-function deuErro() {
-    alert('Favor preencher os dados corretamente');
-}
 
 function criarPerguntas() {
+    let link = document.querySelector('#url-passoum');
+
     verificarTitulo();
     verificarQdPerguntas();
     verificarNiveis();
-    if(verificarURL(document.querySelector('.inputsPassoUm .URL').value)){
+    if(verificarURL(link.value)){
         adicionarURL();
+        link.style.backgroundColor = "transparent";
+        link.labels[0].classList.remove("show");
+    }else{
+        link.style.backgroundColor = "#FFE9E9";
+        link.labels[0].classList.add("show");
+        return
     }
 
     objetoRespostas = {
-        title: textoTitulo,
-        image: textoURL,
-        qtd: textoQdPerguntas,
-        level: textoNiveis
+        title: textoTitulo.value,
+        image: link.value,
+        qtd: Number(textoQdPerguntas.value),
+        level: Number(textoNiveis.value)
     }
     console.log(objetoRespostas);
 
     if (tituloVerificado === true && urlVerificado === true && qdPerguntasVerificado === true && niveisVerificado === true) {
             alternarTelas(9);
-            criacaoPerguntasDoQuizz(textoQdPerguntas);
+            criacaoPerguntasDoQuizz(Number(textoQdPerguntas.value));
     }
 
 }
-
-
 
 
 
@@ -121,9 +142,13 @@ function systemExpandirEscolha(e){
     e.classList.add("expanded");
 }
 function systemInvalidInputEscolha(e){
-    document.querySelectorAll(".perguntasManager li input, .ul-niveis li input").forEach(every => {
+    document.querySelectorAll(".perguntasManager li input, .ul-niveis li.expanded input").forEach(every => {
+        every.labels[0].classList.remove('show');
         every.style.border = "1px solid #D1D1D1";
+        every.style.backgroundColor = "transparent";
     })
+    e.labels[0].classList.add('show');
+    e.style.backgroundColor = "#FFE9E9";
     e.style.border = "2px solid crimson";
 }
 function recolherDadosPerguntas(){
@@ -134,7 +159,7 @@ function recolherDadosPerguntas(){
             ]
         }
         let insertInfo = function(nameInput, input, isCorrect){
-            let urlInput = every.querySelector(`input[name="${nameInput}"]`).value
+            let urlInput = every.querySelector(`input[id="${nameInput}"]`).value
             infos.answers.push({
                 text: input.value,
                 image: urlInput,
@@ -145,40 +170,55 @@ function recolherDadosPerguntas(){
             if(canNextPage){
                 if(inputs.value === "" && inputs.dataset.noneed !== "true"){ 
                     canNextPage = false;
-                    alert("Os campos devem estar todos preenchidos corretamente.");
                     systemExpandirEscolha(every);
                     inputs.scrollIntoView({block: "center", behavior: 'smooth'});
                     systemInvalidInputEscolha(inputs);
+                    inputs.labels[0].classList.add('show');
+                    inputs.style.backgroundColor = "#FFE9E9";
                 }
                 else if(inputs.dataset.noneed !== "true" && inputs.type === "url" && !verificarURL(inputs.value)){
                     canNextPage = false;
-                    alert("O link de uma resposta está inválido.");
                     systemExpandirEscolha(every);
                     inputs.scrollIntoView({block: "center", behavior: 'smooth'});
                     inputs.value = "";
                     systemInvalidInputEscolha(inputs);
+                    inputs.labels[0].classList.add('show');
+                    inputs.style.backgroundColor = "#FFE9E9";
                 }
 
                 if(inputs.name == "texto-pergunta"){
                     if(inputs.value.length >= 20){
                         infos.title = inputs.value;
+                        inputs.style.backgroundColor = "transparent";
+                        inputs.labels[0].classList.remove('show');
                     }else if (canNextPage){
                         canNextPage = false;
-                        alert("Texto da pergunta deve possuir no mínimo 20 caracteres.");
                         systemExpandirEscolha(every);
                         inputs.scrollIntoView({block: "center", behavior: 'smooth'});
                         systemInvalidInputEscolha(inputs);
+                        inputs.labels[0].classList.add('show');
+                        inputs.style.backgroundColor = "#FFE9E9";
                     }
                 } else if (inputs.name == "cor-pergunta"){
                     infos.color = inputs.value;
+                    inputs.style.backgroundColor = "transparent";
+                    inputs.labels[0].classList.remove('show');
                 } else if (inputs.name == "respostaCorreta-pergunta" && inputs.value != ""){
-                    insertInfo("url1-pergunta", inputs, true);
+                    insertInfo(`url1-pergunta${every.dataset.id}`, inputs, true);
+                    inputs.style.backgroundColor = "transparent";
+                    inputs.labels[0].classList.remove('show');
                 } else if (inputs.name == "respostaIncorreta1-pergunta" && inputs.value != ""){
-                    insertInfo("url2-pergunta", inputs, false);
+                    insertInfo(`url2-pergunta${every.dataset.id}`, inputs, false);
+                    inputs.style.backgroundColor = "transparent";
+                    inputs.labels[0].classList.remove('show');
                 } else if (inputs.name == "respostaIncorreta2-pergunta" && inputs.value != ""){
-                    insertInfo("url3-pergunta", inputs, false); 
+                    insertInfo(`url3-pergunta${every.dataset.id}`, inputs, false); 
+                    inputs.style.backgroundColor = "transparent";
+                    inputs.labels[0].classList.remove('show');
                 } else if (inputs.name == "respostaIncorreta3-pergunta" && inputs.value != ""){
-                    insertInfo("url4-pergunta", inputs, false);
+                    insertInfo(`url4-pergunta${every.dataset.id}`, inputs, false);
+                    inputs.style.backgroundColor = "transparent";
+                    inputs.labels[0].classList.remove('show');
                 }
             }
         } )
@@ -190,7 +230,7 @@ function recolherDadosPerguntas(){
 function criarEscolhas() {
     if(bonusStatus.mode === "creation"){
         alternarTelas(10);
-        criarNiveis(textoNiveis);
+        criarNiveis(Number(textoNiveis.value));
     }else if(bonusStatus.mode === "edition"){
         alternarTelas(10);
     }
@@ -201,22 +241,39 @@ function criacaoPerguntasDoQuizz(qtdePerguntas) {
 
     for (let index = 0; index < qtdePerguntas; index++) {
         let atalhoLi = `
-        <li class>
+        <li class data-id="${index+1}">
             <div class="numero-pergunta"> <span>Pergunta ${index+1}</span><img onClick="expandirEscolha(this)" src="Vector.png"/> </div>
             <div class="pergunta-input">
-                <input name="texto-pergunta" type="text" placeholder="Texto da pergunta" />
-                <input name="cor-pergunta" type="color" placeholder="Cor de fundo da pergunta" />
+                <label for="texto-pergunta${index+1}">Texto deve possuir no mínimo 20 caracteres</label>
+                <input id="texto-pergunta${index+1}" name="texto-pergunta" type="text" placeholder="Texto da pergunta" />
+
+                <label for="cor-pergunta${index+1}">Cor invalida? erro-fatal - selecione outra cor</label>
+                <input id="cor-pergunta${index+1}" name="cor-pergunta" type="color" placeholder="Cor de fundo da pergunta" />
             </div>
             <p>Resposta Correta</p>
-                <input name="respostaCorreta-pergunta" type="text" placeholder="Resposta Correta">
-                <input name="url1-pergunta" type="url" placeholder="URL da imagem 1"/>
+                <label for="respostaCorreta-pergunta${index+1}">Campo não foi preenchido.</label>
+                <input id="respostaCorreta-pergunta${index+1}" name="respostaCorreta-pergunta" type="text" placeholder="Resposta Correta">
+
+                <label for="url1-pergunta${index+1}">URL inválida.</label>
+                <input id="url1-pergunta${index+1}" name="url1-pergunta" type="url" placeholder="URL da imagem 1"/>
             <p>Resposta Incorreta</p>
-            <input name="respostaIncorreta1-pergunta" type="text" placeholder="Resposta incorreta 1">
-            <input name="url2-pergunta" type="url" placeholder="URL da imagem 2"/>
-            <input data-noNeed="true" name="respostaIncorreta2-pergunta" type="text" placeholder="Resposta incorreta 2">
-            <input data-noNeed="true" name="url3-pergunta" type="url" placeholder="URL da imagem 3"/>
-            <input data-noNeed="true" name="respostaIncorreta3-pergunta" type="text" placeholder="Resposta incorreta 3">
-            <input data-noNeed="true" name="url4-pergunta" type="url" placeholder="URL da imagem 4"/>
+            <label for="respostaIncorreta1-pergunta${index+1}">Campo não foi preenchido.</label>
+            <input id="respostaIncorreta1-pergunta${index+1}" name="respostaIncorreta1-pergunta" type="text" placeholder="Resposta incorreta 1">
+
+            <label for="url2-pergunta${index+1}">URL inválida.</label>
+            <input id="url2-pergunta${index+1}" name="url2-pergunta" type="url" placeholder="URL da imagem 2"/>
+
+            <label for="respostaIncorreta2-pergunta${index+1}">Campo não foi preenchido.</label>
+            <input data-noNeed="true" id="respostaIncorreta2-pergunta${index+1}" name="respostaIncorreta2-pergunta" type="text" placeholder="Resposta incorreta 2">
+
+            <label for="url3-pergunta${index+1}">URL inválida.</label>
+            <input data-noNeed="true" id="url3-pergunta${index+1}" name="url3-pergunta" type="url" placeholder="URL da imagem 3"/>
+
+            <label for="respostaIncorreta3-pergunta${index+1}">Campo não foi preenchido.</label>
+            <input data-noNeed="true" id="respostaIncorreta3-pergunta${index+1}" name="respostaIncorreta3-pergunta" type="text" placeholder="Resposta incorreta 3">
+
+            <label for="url4-pergunta${index+1}">URL inválida.</label>
+            <input data-noNeed="true" id="url4-pergunta${index+1}" name="url4-pergunta" type="url" placeholder="URL da imagem 4"/>
         </li>`;
         perguntasManager.innerHTML += atalhoLi;
     }
@@ -250,10 +307,17 @@ function criarNiveis(lvl) {
             <div class="li-nivel-label"><span>Nível ${i}</span><img class="" src="Vector.png"  alt="" onclick="abreOpcaoNivel(this)" id="${i}">
             </div>
             <div class="li-nivel-input">
-                <input class="input-nivel titulo-nivel disable" type="text" placeholder="Título do nível" name="titulo-nivel" id="titulo-nivel">
-                <input class="input-nivel disable" type="number" placeholder="% de acerto mínima" name="porcentagem-nivel" id="porcentagem-nivel">
-                <input class="input-nivel disable" type="url" placeholder="URL da imagem do nível" name="url-nivel">
-                <input class="input-nivel disable" type="text" placeholder="Descrição do nível" name="descricao-nivel" id="descricao-nivel">
+                <label for="titulo-nivel${i}">Texto do nível deve possuir no mínimo 10 caracteres.</label>
+                <input class="input-nivel titulo-nivel disable" type="text" placeholder="Título do nível" name="titulo-nivel" id="titulo-nivel${i}">
+    
+                <label for="porcentagem-nivel${i}">Só permitido valores entre 0 a 100.</label>
+                <input class="input-nivel disable" type="number" placeholder="% de acerto mínima" name="porcentagem-nivel" id="porcentagem-nivel${i}">
+
+                <label for="url-nivel${i}">URL da imagem está invalido.</label>
+                <input class="input-nivel disable" type="url" placeholder="URL da imagem do nível" name="url-nivel" id="url-nivel${i}">
+
+                <label for="descricao-nivel${i}">Descrição do nível deve possuir no mínimo 30 caracteres.</label>
+                <input class="input-nivel disable" type="text" placeholder="Descrição do nível" name="descricao-nivel" id="descricao-nivel${i}">
             </div>
         </li>
     `
@@ -281,9 +345,13 @@ function systemExpandirNivel(e){
     e.id = "selecionada";
 }
 function systemInvalidInputNivel(e){
-    document.querySelectorAll(".ul-niveis li input, .ul-niveis li input").forEach(every => {
+    document.querySelectorAll(".ul-niveis li input, .ul-niveis li#selecionada input").forEach(every => {
+        every.labels[0].classList.remove('show');
         every.style.border = "1px solid #D1D1D1";
+        every.style.backgroundColor = "transparent";
     })
+    e.labels[0].classList.add('show');
+    e.style.backgroundColor = "#FFE9E9";
     e.style.border = "2px solid crimson";
 }
 function guardarNiveis(){
@@ -295,7 +363,6 @@ function guardarNiveis(){
             if(canNextPage){
                 if(inputs.value === ""){ 
                     canNextPage = false;
-                    alert("Os campos devem estar todos preenchidos corretamente.");
                     systemExpandirNivel(every);
                     inputs.scrollIntoView({block: "center", behavior: 'smooth'});
                     systemInvalidInputNivel(inputs);
@@ -304,43 +371,55 @@ function guardarNiveis(){
                 if(inputs.name == "titulo-nivel"){
                     if(inputs.value.length >= 10){
                         infos.title = inputs.value;
+                        inputs.style.backgroundColor = "transparent";
+                        inputs.labels[0].classList.remove('show');
                     }else if (canNextPage){
                         canNextPage = false;
-                        alert("Texto do nível deve possuir no mínimo 10 caracteres.");
                         systemExpandirNivel(every);
                         inputs.scrollIntoView({block: "center", behavior: 'smooth'});
                         systemInvalidInputNivel(inputs);
+                        inputs.labels[0].classList.add('show');
+                        inputs.style.backgroundColor = "#FFE9E9";
                     }
                 } else if (inputs.name == "porcentagem-nivel"){
                     if(inputs.value >= 0 && inputs.value <= 100 ){
                         infos.minValue = Number(inputs.value);
+                        inputs.style.backgroundColor = "transparent";
+                        inputs.labels[0].classList.remove('show');
                     }else if (canNextPage){
                         canNextPage = false;
-                        alert("Só permitido valores entre 0 a 100.");
                         systemExpandirNivel(every);
                         inputs.scrollIntoView({block: "center", behavior: 'smooth'});
                         systemInvalidInputNivel(inputs);
+                        inputs.labels[0].classList.add('show');
+                        inputs.style.backgroundColor = "#FFE9E9";
                     }
                 } else if (inputs.name == "url-nivel"){
                     if(inputs.type === "url" && verificarURL(inputs.value)){
                         infos.image = inputs.value;
+                        inputs.style.backgroundColor = "transparent";
+                        inputs.labels[0].classList.remove('show');
                     }else if (canNextPage){
                         canNextPage = false;
-                        alert("URL da imagem está invalido.");
                         systemExpandirNivel(every);
                         inputs.scrollIntoView({block: "center", behavior: 'smooth'});
                         inputs.value = "";
                         systemInvalidInputNivel(inputs);
+                        inputs.labels[0].classList.add('show');
+                        inputs.style.backgroundColor = "#FFE9E9";
                     }
                 } else if (inputs.name == "descricao-nivel"){
                     if(inputs.value.length >= 30){
                         infos.text = inputs.value;
+                        inputs.style.backgroundColor = "transparent";
+                        inputs.labels[0].classList.remove('show');
                     }else if (canNextPage){
                         canNextPage = false;
-                        alert("Descrição do nível deve possuir no mínimo 30 caracteres.");
                         systemExpandirNivel(every);
                         inputs.scrollIntoView({block: "center", behavior: 'smooth'});
                         systemInvalidInputNivel(inputs);
+                        inputs.labels[0].classList.add('show');
+                        inputs.style.backgroundColor = "#FFE9E9";
                     }
                 } 
             }

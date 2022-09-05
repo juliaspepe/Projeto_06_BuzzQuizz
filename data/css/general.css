@@ -28,7 +28,8 @@ header p {
     line-height: 43px;
     color: #FFFFFF;
 }
-
+label{ display: none; color: red }
+label.show{ display: block; width: 90%; }
 .container {
     margin: 0;
     padding: 0;
