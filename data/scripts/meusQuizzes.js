@@ -21,13 +21,14 @@ function addQuizzDataStorage(quizzID, key) {
 }
 
 function loading(){
-	let adicionarLoader = document.querySelector('.ldio-9z6lrpsoe6').classList.add('hidden');
-	let tirarClasse = document.querySelector('.baseListaQuizz').classList.remove('hidden');
+	let tirarLoading = document.querySelector('.ldio-9z6lrpsoe6').classList.add('hidden');
+	let tirarTexto= document.querySelector('.textoCarregando').classList.add('hidden');
+	let aparecerPagina = document.querySelector('.baseListaQuizz').classList.remove('hidden');
 }
 
 function updateQuizzList() {
 	setInterval(loading, 2000);
-
+	
 	let promise = axios.get(API);
 	promise.then(
 		function(res){

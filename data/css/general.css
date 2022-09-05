@@ -73,6 +73,31 @@ h2 {
         border: none;
     }
 
+.carregandoEntrada,
+.carregandoQuizz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} 
+
+.carregandoQuizz {
+  margin-top: 100px;
+}
+
+.carregandoEntrada {
+  margin-top: 20px;
+}
+
+.textoCarregando {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height: 29px;
+color: #EC362D;
+}
+
 /* loading */
 
 @keyframes ldio-9z6lrpsoe6 {
@@ -89,6 +114,7 @@ h2 {
   height: 26.52px;
   border-radius: 6.12px / 7.4256px;
   transform-origin: 6.12px 56.1px;
+ 
 }.ldio-9z6lrpsoe6 div:nth-child(1) {
   transform: rotate(0deg);
   animation-delay: -1.2474012474012475s;

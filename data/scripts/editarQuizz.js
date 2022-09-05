@@ -70,7 +70,6 @@ function editarQuizz(id, key) {
     })
 }
 function deletarQuizz(id, key) {
-    
     let enviarQuizz = axios.delete(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`, {'headers': {"Secret-Key": key}});
     enviarQuizz.then( retorno =>{
         console.log(retorno)
