@@ -73,7 +73,12 @@ function updateMyQuizzList(){
 						});
 				  })
 			});
-
+			requisicao.catch(quizzes =>{
+				console.log(quizzes);
+				if(quizzes.response.status === 404){
+					localStorage.quizz = JSON.stringify( getQuizzDataStorage().filter( b => b[0] != a[0]) );
+				}
+			})
 		})
 
 	}
