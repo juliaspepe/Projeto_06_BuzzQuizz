@@ -51,6 +51,7 @@ function importarQuizzEditor(id){
         }
     );
 }
+
 function editarQuizz(id, key) {
     let quizzPronto = {
         title: bonusStatus.title,
@@ -58,19 +59,13 @@ function editarQuizz(id, key) {
         questions: perguntas,
         levels: niveis
     }
-
-    console.log(quizzPronto);
     
     let enviarQuizz = axios.put(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`, quizzPronto, {'headers': {"Secret-Key": key}});
-    enviarQuizz.then( retorno =>{
-        console.log(retorno)
-    })
-    .catch( erro =>{
+    enviarQuizz.catch( erro =>{
         console.error(erro);
     })
 }
 function deletarQuizz(id, key) {
-    
     if(confirm("Deseja mesmo excluir seu Quizz?")){
         let enviarQuizz = axios.delete(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`, {'headers': {"Secret-Key": key}});
         enviarQuizz.then( retorno =>{

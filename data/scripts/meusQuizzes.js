@@ -22,8 +22,8 @@ function addQuizzDataStorage(quizzID, key) {
 }
 
 function loading(){
-	let adicionarLoader = document.querySelector('.ldio-9z6lrpsoe6').classList.add('hidden');
-	let tirarClasse = document.querySelector('.baseListaQuizz').classList.remove('hidden');
+	let tirarLoading = document.querySelector('.carregandoEntrada').classList.add('hidden');
+	let aparecerPagina = document.querySelector('.baseListaQuizz').classList.remove('hidden');
 }
 
 function updateQuizzList() {

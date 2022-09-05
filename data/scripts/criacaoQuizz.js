@@ -1,9 +1,17 @@
 let objetoRespostas = {};
 // Tela 8
+
+function loadingCriarQuizz() {
+    let tirarLoading = document.querySelector('.carregandoCriacaoQuizz').classList.add('hidden');
+    let aparecerHeader = document.querySelector('.tela8-container').classList.remove('hidden');
+}
+
 function primeiraParteCriacaoQuizz(param) {
+    setInterval(loadingCriarQuizz, 2000);
     document.querySelector(".tela8").innerHTML =
-        
-    `<h1>Comece pelo começo</h1>
+
+        `<div class="tela8-container hidden">
+    <h1>Comece pelo começo</h1>
     <div class="inputsPassoUm">
     <label for="titulo-passoum">O Título deve possuir enre 20 e 65 caracteres.</label>
     <input id="titulo-passoum" type="text" placeholder="Título do seu quizz" class="titulo" />
@@ -18,12 +26,34 @@ function primeiraParteCriacaoQuizz(param) {
     <input id="niveis-passoum" type="text" placeholder="Quantidade de níveis do quizz" class="niveis" />
 
     </div>
-    <button onclick="criarPerguntas()">Prosseguir pra criar perguntas</button>`
+    <button onclick="criarPerguntas()">Prosseguir pra criar perguntas</button>
+    </div>
+    <div class="carregandoCriacaoQuizz">
+    <div class="loadingio-spinner-spinner-547wu04bgh7">
+        <div class="ldio-9z6lrpsoe6">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <p class="textoCarregando">Carregando</p>
+</div>
+    `
 
-    if(param.mode === "creation"){
+    if (param.mode === "creation") {
         bonusStatus.mode = "creation";
 
-    }else if(param.mode === "edition"){
+    } else if (param.mode === "edition") {
         bonusStatus.mode = "edition"
         bonusStatus['id'] = param.id;
         bonusStatus['key'] = param.key;
@@ -52,6 +82,7 @@ function verificarURL(url) {
     try{
         if(new URL(url)) { return true }
     } catch(err) {
+
         return false
         console.error(err)
     }
@@ -88,11 +119,12 @@ function criarPerguntas() {
     verificarTitulo();
     verificarQdPerguntas();
     verificarNiveis();
+
     if(verificarURL(link.value)){
         adicionarURL(link.value);
         link.style.backgroundColor = "transparent";
         link.labels[0].classList.remove("show");
-    }else{
+    } else {
         link.style.backgroundColor = "#FFE9E9";
         link.labels[0].classList.add("show");
         return
@@ -104,11 +136,10 @@ function criarPerguntas() {
         qtd: Number(textoQdPerguntas.value),
         level: Number(textoNiveis.value)
     }
-    console.log(objetoRespostas);
 
     if (tituloVerificado === true && urlVerificado === true && qdPerguntasVerificado === true && niveisVerificado === true) {
-            alternarTelas(9);
-            criacaoPerguntasDoQuizz(Number(textoQdPerguntas.value));
+        alternarTelas(9);
+        criacaoPerguntasDoQuizz(Number(textoQdPerguntas.value));
     }
 
 }
@@ -134,13 +165,13 @@ function expandirEscolha(e) {
     })
     e.parentNode.parentNode.classList.add("expanded");
 };
-function systemExpandirEscolha(e){
+function systemExpandirEscolha(e) {
     document.querySelectorAll(".perguntasManager li").forEach(every => {
         every.classList.remove("expanded")
     })
     e.classList.add("expanded");
 }
-function systemInvalidInputEscolha(e){
+function systemInvalidInputEscolha(e) {
     document.querySelectorAll(".perguntasManager li input, .ul-niveis li.expanded input").forEach(every => {
         every.labels[0].classList.remove('show');
         every.style.border = "1px solid #D1D1D1";
@@ -150,14 +181,14 @@ function systemInvalidInputEscolha(e){
     e.style.backgroundColor = "#FFE9E9";
     e.style.border = "2px solid crimson";
 }
-function recolherDadosPerguntas(){
+function recolherDadosPerguntas() {
     let canNextPage = true;
-    document.querySelectorAll(".perguntasManager li").forEach( every =>{
+    document.querySelectorAll(".perguntasManager li").forEach(every => {
         let infos = {
             title: "", color: "", answers: [
             ]
         }
-        let insertInfo = function(nameInput, input, isCorrect){
+        let insertInfo = function (nameInput, input, isCorrect) {
             let urlInput = every.querySelector(`input[id="${nameInput}"]`).value
             infos.answers.push({
                 text: input.value,
@@ -165,72 +196,72 @@ function recolherDadosPerguntas(){
                 isCorrectAnswer: isCorrect
             })
         }
-        every.querySelectorAll("input").forEach( inputs =>{
-            if(canNextPage){
-                if(inputs.value === "" && inputs.dataset.noneed !== "true"){ 
+        every.querySelectorAll("input").forEach(inputs => {
+            if (canNextPage) {
+                if (inputs.value === "" && inputs.dataset.noneed !== "true") {
                     canNextPage = false;
                     systemExpandirEscolha(every);
-                    inputs.scrollIntoView({block: "center", behavior: 'smooth'});
+                    inputs.scrollIntoView({ block: "center", behavior: 'smooth' });
                     systemInvalidInputEscolha(inputs);
                     inputs.labels[0].classList.add('show');
                     inputs.style.backgroundColor = "#FFE9E9";
                 }
-                else if(inputs.dataset.noneed !== "true" && inputs.type === "url" && !verificarURL(inputs.value)){
+                else if (inputs.dataset.noneed !== "true" && inputs.type === "url" && !verificarURL(inputs.value)) {
                     canNextPage = false;
                     systemExpandirEscolha(every);
-                    inputs.scrollIntoView({block: "center", behavior: 'smooth'});
+                    inputs.scrollIntoView({ block: "center", behavior: 'smooth' });
                     inputs.value = "";
                     systemInvalidInputEscolha(inputs);
                     inputs.labels[0].classList.add('show');
                     inputs.style.backgroundColor = "#FFE9E9";
                 }
 
-                if(inputs.name == "texto-pergunta"){
-                    if(inputs.value.length >= 20){
+                if (inputs.name == "texto-pergunta") {
+                    if (inputs.value.length >= 20) {
                         infos.title = inputs.value;
                         inputs.style.backgroundColor = "transparent";
                         inputs.labels[0].classList.remove('show');
-                    }else if (canNextPage){
+                    } else if (canNextPage) {
                         canNextPage = false;
                         systemExpandirEscolha(every);
-                        inputs.scrollIntoView({block: "center", behavior: 'smooth'});
+                        inputs.scrollIntoView({ block: "center", behavior: 'smooth' });
                         systemInvalidInputEscolha(inputs);
                         inputs.labels[0].classList.add('show');
                         inputs.style.backgroundColor = "#FFE9E9";
                     }
-                } else if (inputs.name == "cor-pergunta"){
+                } else if (inputs.name == "cor-pergunta") {
                     infos.color = inputs.value;
                     inputs.style.backgroundColor = "transparent";
                     inputs.labels[0].classList.remove('show');
-                } else if (inputs.name == "respostaCorreta-pergunta" && inputs.value != ""){
+                } else if (inputs.name == "respostaCorreta-pergunta" && inputs.value != "") {
                     insertInfo(`url1-pergunta${every.dataset.id}`, inputs, true);
                     inputs.style.backgroundColor = "transparent";
                     inputs.labels[0].classList.remove('show');
-                } else if (inputs.name == "respostaIncorreta1-pergunta" && inputs.value != ""){
+                } else if (inputs.name == "respostaIncorreta1-pergunta" && inputs.value != "") {
                     insertInfo(`url2-pergunta${every.dataset.id}`, inputs, false);
                     inputs.style.backgroundColor = "transparent";
                     inputs.labels[0].classList.remove('show');
-                } else if (inputs.name == "respostaIncorreta2-pergunta" && inputs.value != ""){
-                    insertInfo(`url3-pergunta${every.dataset.id}`, inputs, false); 
+                } else if (inputs.name == "respostaIncorreta2-pergunta" && inputs.value != "") {
+                    insertInfo(`url3-pergunta${every.dataset.id}`, inputs, false);
                     inputs.style.backgroundColor = "transparent";
                     inputs.labels[0].classList.remove('show');
-                } else if (inputs.name == "respostaIncorreta3-pergunta" && inputs.value != ""){
+                } else if (inputs.name == "respostaIncorreta3-pergunta" && inputs.value != "") {
                     insertInfo(`url4-pergunta${every.dataset.id}`, inputs, false);
                     inputs.style.backgroundColor = "transparent";
                     inputs.labels[0].classList.remove('show');
                 }
             }
-        } )
+        })
         perguntas.push(infos);
     })
-    if(canNextPage){ criarEscolhas() }
-    else{ perguntas = [] }
+    if (canNextPage) { criarEscolhas() }
+    else { perguntas = [] }
 }
 function criarEscolhas() {
-    if(bonusStatus.mode === "creation"){
+    if (bonusStatus.mode === "creation") {
         alternarTelas(10);
         criarNiveis(Number(textoNiveis.value));
-    }else if(bonusStatus.mode === "edition"){
+    } else if (bonusStatus.mode === "edition") {
         alternarTelas(10);
     }
 }
@@ -240,39 +271,39 @@ function criacaoPerguntasDoQuizz(qtdePerguntas) {
 
     for (let index = 0; index < qtdePerguntas; index++) {
         let atalhoLi = `
-        <li data-identifier="question-form" class data-id="${index+1}">
-            <div class="numero-pergunta"> <span>Pergunta ${index+1}</span><img data-identifier="expand" onClick="expandirEscolha(this)" src="Vector.png"/> </div>
+        <li data-identifier="question-form" class data-id="${index + 1}">
+            <div class="numero-pergunta"> <span>Pergunta ${index + 1}</span><img data-identifier="expand" onClick="expandirEscolha(this)" src="Vector.png"/> </div>
             <div class="pergunta-input">
-                <label for="texto-pergunta${index+1}">Texto deve possuir no mínimo 20 caracteres</label>
-                <input id="texto-pergunta${index+1}" name="texto-pergunta" type="text" placeholder="Texto da pergunta" />
+                <label for="texto-pergunta${index + 1}">Texto deve possuir no mínimo 20 caracteres</label>
+                <input id="texto-pergunta${index + 1}" name="texto-pergunta" type="text" placeholder="Texto da pergunta" />
 
-                <label for="cor-pergunta${index+1}">Cor invalida? erro-fatal - selecione outra cor</label>
-                <input id="cor-pergunta${index+1}" name="cor-pergunta" type="color" placeholder="Cor de fundo da pergunta" />
+                <label for="cor-pergunta${index + 1}">Cor invalida? erro-fatal - selecione outra cor</label>
+                <input id="cor-pergunta${index + 1}" name="cor-pergunta" type="color" placeholder="Cor de fundo da pergunta" />
             </div>
             <p>Resposta Correta</p>
-                <label for="respostaCorreta-pergunta${index+1}">Campo não foi preenchido.</label>
-                <input id="respostaCorreta-pergunta${index+1}" name="respostaCorreta-pergunta" type="text" placeholder="Resposta Correta">
+                <label for="respostaCorreta-pergunta${index + 1}">Campo não foi preenchido.</label>
+                <input id="respostaCorreta-pergunta${index + 1}" name="respostaCorreta-pergunta" type="text" placeholder="Resposta Correta">
 
-                <label for="url1-pergunta${index+1}">URL inválida.</label>
-                <input id="url1-pergunta${index+1}" name="url1-pergunta" type="url" placeholder="URL da imagem 1"/>
+                <label for="url1-pergunta${index + 1}">URL inválida.</label>
+                <input id="url1-pergunta${index + 1}" name="url1-pergunta" type="url" placeholder="URL da imagem 1"/>
             <p>Resposta Incorreta</p>
-            <label for="respostaIncorreta1-pergunta${index+1}">Campo não foi preenchido.</label>
-            <input id="respostaIncorreta1-pergunta${index+1}" name="respostaIncorreta1-pergunta" type="text" placeholder="Resposta incorreta 1">
+            <label for="respostaIncorreta1-pergunta${index + 1}">Campo não foi preenchido.</label>
+            <input id="respostaIncorreta1-pergunta${index + 1}" name="respostaIncorreta1-pergunta" type="text" placeholder="Resposta incorreta 1">
 
-            <label for="url2-pergunta${index+1}">URL inválida.</label>
-            <input id="url2-pergunta${index+1}" name="url2-pergunta" type="url" placeholder="URL da imagem 2"/>
+            <label for="url2-pergunta${index + 1}">URL inválida.</label>
+            <input id="url2-pergunta${index + 1}" name="url2-pergunta" type="url" placeholder="URL da imagem 2"/>
 
-            <label for="respostaIncorreta2-pergunta${index+1}">Campo não foi preenchido.</label>
-            <input data-noNeed="true" id="respostaIncorreta2-pergunta${index+1}" name="respostaIncorreta2-pergunta" type="text" placeholder="Resposta incorreta 2">
+            <label for="respostaIncorreta2-pergunta${index + 1}">Campo não foi preenchido.</label>
+            <input data-noNeed="true" id="respostaIncorreta2-pergunta${index + 1}" name="respostaIncorreta2-pergunta" type="text" placeholder="Resposta incorreta 2">
 
-            <label for="url3-pergunta${index+1}">URL inválida.</label>
-            <input data-noNeed="true" id="url3-pergunta${index+1}" name="url3-pergunta" type="url" placeholder="URL da imagem 3"/>
+            <label for="url3-pergunta${index + 1}">URL inválida.</label>
+            <input data-noNeed="true" id="url3-pergunta${index + 1}" name="url3-pergunta" type="url" placeholder="URL da imagem 3"/>
 
-            <label for="respostaIncorreta3-pergunta${index+1}">Campo não foi preenchido.</label>
-            <input data-noNeed="true" id="respostaIncorreta3-pergunta${index+1}" name="respostaIncorreta3-pergunta" type="text" placeholder="Resposta incorreta 3">
+            <label for="respostaIncorreta3-pergunta${index + 1}">Campo não foi preenchido.</label>
+            <input data-noNeed="true" id="respostaIncorreta3-pergunta${index + 1}" name="respostaIncorreta3-pergunta" type="text" placeholder="Resposta incorreta 3">
 
-            <label for="url4-pergunta${index+1}">URL inválida.</label>
-            <input data-noNeed="true" id="url4-pergunta${index+1}" name="url4-pergunta" type="url" placeholder="URL da imagem 4"/>
+            <label for="url4-pergunta${index + 1}">URL inválida.</label>
+            <input data-noNeed="true" id="url4-pergunta${index + 1}" name="url4-pergunta" type="url" placeholder="URL da imagem 4"/>
         </li>`;
         perguntasManager.innerHTML += atalhoLi;
     }
@@ -337,13 +368,13 @@ function abreOpcaoNivel(itemClicado) {
     })
 }
 
-function systemExpandirNivel(e){
+function systemExpandirNivel(e) {
     document.querySelectorAll(".ul-niveis li").forEach(every => {
         every.id = "";
     })
     e.id = "selecionada";
 }
-function systemInvalidInputNivel(e){
+function systemInvalidInputNivel(e) {
     document.querySelectorAll(".ul-niveis li input, .ul-niveis li#selecionada input").forEach(every => {
         every.labels[0].classList.remove('show');
         every.style.border = "1px solid #D1D1D1";
@@ -353,79 +384,79 @@ function systemInvalidInputNivel(e){
     e.style.backgroundColor = "#FFE9E9";
     e.style.border = "2px solid crimson";
 }
-function guardarNiveis(){
+function guardarNiveis() {
     let canNextPage = true;
-    document.querySelectorAll(".ul-niveis li").forEach( every =>{
+    document.querySelectorAll(".ul-niveis li").forEach(every => {
         let infos = { title: "", image: "", text: "", minValue: 0 }
 
-        every.querySelectorAll("input").forEach( inputs =>{
-            if(canNextPage){
-                if(inputs.value === ""){ 
+        every.querySelectorAll("input").forEach(inputs => {
+            if (canNextPage) {
+                if (inputs.value === "") {
                     canNextPage = false;
                     systemExpandirNivel(every);
-                    inputs.scrollIntoView({block: "center", behavior: 'smooth'});
+                    inputs.scrollIntoView({ block: "center", behavior: 'smooth' });
                     systemInvalidInputNivel(inputs);
                 }
 
-                if(inputs.name == "titulo-nivel"){
-                    if(inputs.value.length >= 10){
+                if (inputs.name == "titulo-nivel") {
+                    if (inputs.value.length >= 10) {
                         infos.title = inputs.value;
                         inputs.style.backgroundColor = "transparent";
                         inputs.labels[0].classList.remove('show');
-                    }else if (canNextPage){
+                    } else if (canNextPage) {
                         canNextPage = false;
                         systemExpandirNivel(every);
-                        inputs.scrollIntoView({block: "center", behavior: 'smooth'});
+                        inputs.scrollIntoView({ block: "center", behavior: 'smooth' });
                         systemInvalidInputNivel(inputs);
                         inputs.labels[0].classList.add('show');
                         inputs.style.backgroundColor = "#FFE9E9";
                     }
-                } else if (inputs.name == "porcentagem-nivel"){
-                    if(inputs.value >= 0 && inputs.value <= 100 ){
+                } else if (inputs.name == "porcentagem-nivel") {
+                    if (inputs.value >= 0 && inputs.value <= 100) {
                         infos.minValue = Number(inputs.value);
                         inputs.style.backgroundColor = "transparent";
                         inputs.labels[0].classList.remove('show');
-                    }else if (canNextPage){
+                    } else if (canNextPage) {
                         canNextPage = false;
                         systemExpandirNivel(every);
-                        inputs.scrollIntoView({block: "center", behavior: 'smooth'});
+                        inputs.scrollIntoView({ block: "center", behavior: 'smooth' });
                         systemInvalidInputNivel(inputs);
                         inputs.labels[0].classList.add('show');
                         inputs.style.backgroundColor = "#FFE9E9";
                     }
-                } else if (inputs.name == "url-nivel"){
-                    if(inputs.type === "url" && verificarURL(inputs.value)){
+                } else if (inputs.name == "url-nivel") {
+                    if (inputs.type === "url" && verificarURL(inputs.value)) {
                         infos.image = inputs.value;
                         inputs.style.backgroundColor = "transparent";
                         inputs.labels[0].classList.remove('show');
-                    }else if (canNextPage){
+                    } else if (canNextPage) {
                         canNextPage = false;
                         systemExpandirNivel(every);
-                        inputs.scrollIntoView({block: "center", behavior: 'smooth'});
+                        inputs.scrollIntoView({ block: "center", behavior: 'smooth' });
                         inputs.value = "";
                         systemInvalidInputNivel(inputs);
                         inputs.labels[0].classList.add('show');
                         inputs.style.backgroundColor = "#FFE9E9";
                     }
-                } else if (inputs.name == "descricao-nivel"){
-                    if(inputs.value.length >= 30){
+                } else if (inputs.name == "descricao-nivel") {
+                    if (inputs.value.length >= 30) {
                         infos.text = inputs.value;
                         inputs.style.backgroundColor = "transparent";
                         inputs.labels[0].classList.remove('show');
-                    }else if (canNextPage){
+                    } else if (canNextPage) {
                         canNextPage = false;
                         systemExpandirNivel(every);
-                        inputs.scrollIntoView({block: "center", behavior: 'smooth'});
+                        inputs.scrollIntoView({ block: "center", behavior: 'smooth' });
                         systemInvalidInputNivel(inputs);
                         inputs.labels[0].classList.add('show');
                         inputs.style.backgroundColor = "#FFE9E9";
                     }
-                } 
+                }
             }
-        } )
+        })
         niveis.push(infos);
     })
-    if(canNextPage){ sucessoQuizz() }
+    if (canNextPage) { sucessoQuizz() }
     else { niveis = [] }
 }
 
@@ -440,13 +471,13 @@ buttonFinalizarQuizz.addEventListener('click', guardarNiveis)
 
 // tela 11
 function sucessoQuizz() {
-    if(bonusStatus.mode == "creation"){
+    if (bonusStatus.mode == "creation") {
         salvarQuizz();
         alternarTelas(11);
-    
+
         document.querySelector(".tela11").innerHTML =
-    
-        `<h1>Seu quizz está pronto!</h1>
+
+            `<h1>Seu quizz está pronto!</h1>
         <div class="tumbQuizzCriado">
             <img class="imgQuizz" src="${textoURL}"/>
             <p class="tituloDoQuizz">${textoTitulo.value}</p>
@@ -454,7 +485,7 @@ function sucessoQuizz() {
         <button class="botaoAcessar">Acessar Quizz</button>
         <button class="botaoHome" onclick="home()">Voltar para home</button>`
     }
-    else if(bonusStatus.mode == "edition"){
+    else if (bonusStatus.mode == "edition") {
         editarQuizz(bonusStatus.id, bonusStatus.key);
         alternarTelas(1);
     }
@@ -475,15 +506,13 @@ function salvarQuizz() {
         levels: niveis
     }
 
-    console.log(quizzPronto);
-    
     let enviarQuizz = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", quizzPronto);
-    enviarQuizz.then( retorno =>{
+    enviarQuizz.then(retorno => {
         addQuizzDataStorage(retorno.data.id, retorno.data.key);
-        document.querySelector('.tela11 .botaoAcessar').addEventListener('click', ()=>{ openQuizz("", retorno.data.id) });
+        document.querySelector('.tela11 .botaoAcessar').addEventListener('click', () => { openQuizz("", retorno.data.id) });
     })
-    .catch( erro =>{
-        console.error(erro);
-    })
+        .catch(erro => {
+            console.error(erro);
+        })
 }
 
