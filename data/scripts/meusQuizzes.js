@@ -35,7 +35,7 @@ function updateQuizzList() {
 			quizzes = res;
 			res.data.forEach( (quizz) =>{
 				document.querySelector(".baseListaQuizz").innerHTML += `
-					<div class="quizzThumbnail" data-id="${quizz.id}" onclick="openQuizz(this)">
+					<div data-identifier="quizz-card" class="quizzThumbnail" data-id="${quizz.id}" onclick="openQuizz(this)">
 						<p class="quizzTitulo">${quizz.title}</p>
 						<img src="${quizz.image}" alt="quizz">
 					</div>`
@@ -55,7 +55,7 @@ function updateMyQuizzList(){
 				console.log(quizzes)
 					ulListaQuizzes.innerHTML += `
 					<li>
-						<div class="quizzThumbnail" data-id="${a[0]}" data-key="${a[1]}">
+						<div data-identifier="quizz-card" class="quizzThumbnail" data-id="${a[0]}" data-key="${a[1]}">
 							<div class="edicoesQuizz">
 								<ion-icon name="create-outline" onclick="iniciarCriarQuizz({mode: 'edition', id:'${a[0]}', key:'${a[1]}'})"></ion-icon>
 								<ion-icon name="trash-outline" onclick="deletarQuizz(${a[0]}, '${a[1]}')"></ion-icon>

@@ -30,14 +30,14 @@
             <div class="baseCriarQuizz">
                 <div class="baseVaziaCriarQuizz">
                     <p>Você não criou nenhum quizz ainda :(</p>
-                    <button onclick="iniciarCriarQuizz({mode: 'creation'})">Criar Quizz</button>
+                    <button data-identifier="create-quizz" onclick="iniciarCriarQuizz({mode: 'creation'})">Criar Quizz</button>
                 </div>
-                <div class="baseUsuarioCriarQuizz">        
+                <div class="baseUsuarioCriarQuizz">
                     <div class="titulo">
                         <h2>Meus Quizzes</h2>
-                        <ion-icon name="add-circle" onclick="iniciarCriarQuizz({mode: 'creation'})"></ion-icon>
+                        <ion-icon data-identifier="create-quizz" name="add-circle" onclick="iniciarCriarQuizz({mode: 'creation'})"></ion-icon>
                     </div>
-                    <ul class="listaDeQuizz">
+                    <ul data-identifier="user-quizzes" class="listaDeQuizz">
 
                     </ul>
                 </div>
@@ -46,7 +46,7 @@
             <div class="titulo">
                 <h2>Todos os Quizzes</h2>
             </div>
-            <div class="baseListaQuizz hidden">
+            <div data-identifier="general-quizzes" class="baseListaQuizz hidden">
             </div>
             <div class="loadingio-spinner-spinner-547wu04bgh7"><div class="ldio-9z6lrpsoe6">
                 <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>

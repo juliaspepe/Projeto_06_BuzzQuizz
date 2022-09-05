@@ -241,8 +241,8 @@ function criacaoPerguntasDoQuizz(qtdePerguntas) {
 
     for (let index = 0; index < qtdePerguntas; index++) {
         let atalhoLi = `
-        <li class data-id="${index+1}">
-            <div class="numero-pergunta"> <span>Pergunta ${index+1}</span><img onClick="expandirEscolha(this)" src="Vector.png"/> </div>
+        <li data-identifier="question-form" class data-id="${index+1}">
+            <div class="numero-pergunta"> <span>Pergunta ${index+1}</span><img data-identifier="expand" onClick="expandirEscolha(this)" src="Vector.png"/> </div>
             <div class="pergunta-input">
                 <label for="texto-pergunta${index+1}">Texto deve possuir no mínimo 20 caracteres</label>
                 <input id="texto-pergunta${index+1}" name="texto-pergunta" type="text" placeholder="Texto da pergunta" />
@@ -303,8 +303,8 @@ function criarNiveis(lvl) {
     ulNiveis.innerHTML = "";
     for (let i = 1; i <= lvl; i++) {
         ulNiveis.innerHTML += `
-        <li class="li-nivel">
-            <div class="li-nivel-label"><span>Nível ${i}</span><img class="" src="Vector.png"  alt="" onclick="abreOpcaoNivel(this)" id="${i}">
+        <li data-identifier="level" class="li-nivel">
+            <div class="li-nivel-label"><span>Nível ${i}</span><img data-identifier="expand" class="" src="Vector.png"  alt="" onclick="abreOpcaoNivel(this)" id="${i}">
             </div>
             <div class="li-nivel-input">
                 <label for="titulo-nivel${i}">Texto do nível deve possuir no mínimo 10 caracteres.</label>
