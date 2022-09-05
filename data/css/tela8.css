@@ -1,4 +1,4 @@
-.tela8 {
+.tela8-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,16 +6,16 @@
     margin-top: 70px;
     width: 100%;
 }
-.tela8 h1{
+.tela8-container h1{
     margin-bottom: 40px;
 }
-.tela8 button {
+.tela8-container button {
     width: 368.86px;
     height: 54px;
     margin-top: 85px;
     border: none;
 }
-.tela8 .inputsPassoUm {
+.tela8-container .inputsPassoUm {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,7 +27,7 @@
     flex-direction: column;
 }
 
-.tela8 .inputsPassoUm input {
+.tela8-container .inputsPassoUm input {
     width: 564px;
     height: 46px;
     border: 1px solid #D1D1D1;
@@ -40,24 +40,28 @@
     font-style: italic;
 }
 
-.tela8 .inputsPassoUm input::placeholder{
+.tela8-container .inputsPassoUm input::placeholder{
     color:#c0c0c0
 }
 
 @media(max-width: 1100px){
-    .tela8{
+    .tela8 {
         width: 100%;
     }
 
-    .tela8 .inputsPassoUm{
+    .tela8-container {
         width: 100%;
     }
 
-    .tela8 .inputsPassoUm input{
+    .tela8-container .inputsPassoUm{
+        width: 100%;
+    }
+
+    .tela8-container .inputsPassoUm input{
         width: 90%;
     }
 
-    .tela8 .tela8 button{
+    .tela8-container .tela8-container button{
         margin-top: 50px;
         width: 90%;
     }

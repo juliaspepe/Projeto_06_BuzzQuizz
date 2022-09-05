@@ -75,14 +75,16 @@ h2 {
     }
 
 .carregandoEntrada,
-.carregandoQuizz {
+.carregandoQuizz,
+.carregandoCriacaoQuizz {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 } 
 
-.carregandoQuizz {
+.carregandoQuizz,
+.carregandoCriacaoQuizz {
   margin-top: 100px;
 }
 

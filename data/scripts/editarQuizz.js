@@ -51,6 +51,7 @@ function importarQuizzEditor(id){
         }
     );
 }
+
 function editarQuizz(id, key) {
     let quizzPronto = {
         title: bonusStatus.title,

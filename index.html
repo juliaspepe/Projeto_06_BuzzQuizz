@@ -9,7 +9,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="data/css/reset.css">
     <link rel="stylesheet" href="data/css/general.css">
     <link rel="stylesheet" href="data/css/tela1.css">
@@ -30,12 +31,14 @@
             <div class="baseCriarQuizz">
                 <div class="baseVaziaCriarQuizz">
                     <p>Você não criou nenhum quizz ainda :(</p>
-                    <button data-identifier="create-quizz" onclick="iniciarCriarQuizz({mode: 'creation'})">Criar Quizz</button>
+                    <button data-identifier="create-quizz" onclick="iniciarCriarQuizz({mode: 'creation'})">Criar
+                        Quizz</button>
                 </div>
                 <div class="baseUsuarioCriarQuizz">
                     <div class="titulo">
                         <h2>Meus Quizzes</h2>
-                        <ion-icon data-identifier="create-quizz" name="add-circle" onclick="iniciarCriarQuizz({mode: 'creation'})"></ion-icon>
+                        <ion-icon data-identifier="create-quizz" name="add-circle"
+                            onclick="iniciarCriarQuizz({mode: 'creation'})"></ion-icon>
                     </div>
                     <ul data-identifier="user-quizzes" class="listaDeQuizz">
 
@@ -48,17 +51,56 @@
             </div>
             <div data-identifier="general-quizzes" class="baseListaQuizz hidden">
             </div>
-            <div class="loadingio-spinner-spinner-547wu04bgh7"><div class="ldio-9z6lrpsoe6">
-                <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-                </div></div> 
+            <div class="carregandoEntrada">
+                <div class="loadingio-spinner-spinner-547wu04bgh7">
+                    <div class="ldio-9z6lrpsoe6">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <p class="textoCarregando">Carregando</p>
+            </div>
         </div>
+
         <div class="tela3 hidden">
-            <div class="headerDoQuizz"></div>
-            <div class="textoDoQuiz"></div>
-            <ul class="listQuizz"></ul>
+            <div class="headerDoQuizz hidden"></div>
+            <div class="textoDoQuizz hidden"></div>
+            <ul class="listQuizz hidden"></ul>
+            <div class="carregandoQuizz">
+                <div class="loadingio-spinner-spinner-547wu04bgh7">
+                    <div class="ldio-9z6lrpsoe6">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <p class="textoCarregando">Carregando</p>
+            </div>
         </div>
         <div class="tela8 hidden">
         </div>
+        
         <div class="tela9 hidden">
             <h1>Crie suas perguntas</h1>
             <ul class="perguntasManager">

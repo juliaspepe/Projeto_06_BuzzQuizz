@@ -68,7 +68,16 @@ function selectAnswer(e){
     }
 }
 
+function loadingQuizz(){
+    let tirarLoading = document.querySelector('.carregandoQuizz').classList.add('hidden');
+    let aparecerHeader = document.querySelector('.headerDoQuizz').classList.remove('hidden');
+    let aparecerTexto = document.querySelector('.textoDoQuizz').classList.remove('hidden');
+    let aparecerQuizz = document.querySelector('.listQuizz').classList.remove('hidden');
+    }
+    
+
 function openQuizz(e, directID=undefined){
+    setInterval(loadingQuizz, 2000);
     window.scroll({top: 0, left: 0, behavior: 'smooth' })
     let promise;
     if(directID){
