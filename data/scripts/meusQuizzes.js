@@ -20,7 +20,15 @@ function addQuizzDataStorage(quizzID, key) {
 
 	return data;
 }
+
+function loading(){
+	let adicionarLoader = document.querySelector('.ldio-9z6lrpsoe6').classList.add('hidden');
+	let tirarClasse = document.querySelector('.baseListaQuizz').classList.remove('hidden');
+}
+
 function updateQuizzList() {
+	setInterval(loading, 2000);
+
 	let promise = axios.get(API);
 	promise.then(
 		function(res){
@@ -36,6 +44,7 @@ function updateQuizzList() {
 	)
 }
 function updateMyQuizzList(){
+
 	let quizzMemoryDataStorage = getQuizzDataStorage(); 
 	if(quizzMemoryDataStorage.length !== 0){
 		document.querySelector(".baseCriarQuizz").classList.add("have");
@@ -56,6 +65,7 @@ function updateMyQuizzList(){
 						</div>
 					</li>
 				  `
+
 				  ulListaQuizzes.querySelectorAll('.quizzThumbnail').forEach(thumbnail =>{
 						thumbnail.addEventListener('click', function(e){
 							e.stopPropagation();
